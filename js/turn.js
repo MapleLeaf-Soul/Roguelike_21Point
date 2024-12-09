@@ -124,7 +124,7 @@ async function BossTurn() {
 
 //保险判定
 async function RunTurn() {
-	if (bossCardScore == 10){
+	if (bossCardFirstPoint == 10){
 		document.getElementById('bosscardimg0').src = bossCardFirst;
 		await delay(100);
 		document.getElementById('bosscardimg0').setAttribute('data-cardPiont', bossCardFirstPoint);
