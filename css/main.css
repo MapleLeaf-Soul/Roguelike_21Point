@@ -1,3 +1,10 @@
+@font-face {
+	font-family: 'Arcade';
+	src: url('../fonts/arcade.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 body {
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -27,7 +34,7 @@ body {
 .box div {
 	display: flex;
 	flex-wrap: nowrap;
-	/* justify-content: space-between; */
+	justify-content: space-between;
 }
 
 .boss {
@@ -35,23 +42,25 @@ body {
 	height: 35vh;
 	justify-content: space-between;
 }
-.boss div{
+
+.boss div {
 	position: relative;
 	width: 10vw;
 	height: 14vh;
 	overflow: hidden;
-	right:0px;
+	right: 0px;
 	border: 3px white solid;
 	box-sizing: content-box;
 	margin: 5px;
 	/* clip-path:inset(0px 60px 150px 0px) */
 }
-.boss div img{
+
+.boss>div>img {
 	position: absolute;
 	width: 10vw;
 }
 
-.mastercarddiv{
+.mastercarddiv {
 	width: 40vw;
 	height: 35vh;
 	display: flex;
@@ -59,14 +68,16 @@ body {
 	justify-content: space-between;
 	flex-direction: column;
 }
-.mastercardpoint{
+
+.mastercardpoint {
 	width: 40vw;
 	height: 5vh;
 	align-items: center;
 	justify-content: space-between;
 }
-#masterbutton_score{
-	font-family: "arcade","Arial", sans-serif;
+
+#masterbutton_score {
+	font-family: "arcade", "Arial", sans-serif;
 	font-size: 50px;
 }
 
@@ -79,6 +90,7 @@ body {
 	padding: 1vh 0;
 	overflow: hidden;
 }
+
 .mastercard img {
 	position: absolute;
 	height: 90%;
@@ -100,11 +112,13 @@ body {
 	height: 35vh;
 }
 
-.none1,.none2 {
+.none1,
+.none2 {
 	width: 30vw;
 	height: 30vh;
 }
-.conterDIV{
+
+.conterDIV {
 	width: 40vw;
 	height: 30vh;
 	position: relative;
@@ -113,16 +127,16 @@ body {
 	align-items: center;
 	justify-content: center;
 }
+
 .deathcard {
 	width: 40vw;
 	height: 50%;
 	position: relative;
 }
+
 #deathcard {
+	align-content: center;
 	display: none;
-}
-#storyDIV{
-	/* display: none; */
 }
 
 .deathcard img {
@@ -143,13 +157,66 @@ body {
 		transform: translateY(0);
 	}
 }
+#shopDIV{
+	display: none;
+}
+.shopDIV,.storyDIV {
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	flex-direction: column;
+	align-items: center;
+}
+#shopDIV > div{
+	display: none;
+}
+#shopskip{
+	display: none;
+}
+#shopskip {
+	width: 40vw;
+	display: flax;
+	flex-direction:row;
+	justify-content: space-between;
+}
+
+.shopDIV {
+	width: 40vw;
+	height: 27vh;
+	justify-content: space-between;
+	padding: 2%;
+	
+}
+
+.shopDIV>div {
+	width: 10vw;
+	height: 25vh;
+	display: block;
+	
+}
+
+.shopDIV div {
+	flex-direction: column;
+	text-align: center;
+}
+
+.shopDIV div img {
+	max-height: 45%;
+	max-width: 100%;
+	width: auto;
+	height: auto;
+	object-position: center;
+}
+
+.shopDIV div div {
+	margin: 5% 0px;
+}
 
 .myitem {
 	width: 30vw;
 	height: 35vh;
 }
 
-.mycarddiv{
+.mycarddiv {
 	width: 40vw;
 	height: 35vh;
 	display: flex;
@@ -157,17 +224,20 @@ body {
 	justify-content: space-between;
 	flex-direction: column;
 }
-.mycardpoint{
+
+.mycardpoint {
 	width: 40vw;
 	height: 5vh;
 	align-items: center;
 	justify-content: space-between;
 }
-.mycardpoint div{
+
+.mycardpoint div {
 	font-size: 22px;
 }
-#mybutton_score{
-	font-family: "arcade","Arial", sans-serif;
+
+#mybutton_score {
+	font-family: "arcade", "Arial", sans-serif;
 	font-size: 50px;
 }
 
@@ -201,30 +271,38 @@ body {
 	width: 30vw;
 	height: 35vh;
 }
-.mypointdiv div{
+
+.mypointdiv div {
 	flex-direction: column;
 }
-.mypointimg{
+
+.mypointimg {
 	width: 30vw;
 	height: 20vh;
 }
-.mypoint{
+
+.mypoint {
 	justify-content: space-between;
 }
-#mypoint{
+
+#mypoint {
 	height: 5vh;
-	flex-direction:row;
+	flex-direction: row;
 	background-color: #092c00;
 }
-.mypointnumber,.levelpointnumber{
+
+.mypointnumber,
+.levelpointnumber {
 	width: 40%;
 	align-items: center;
 	font-size: 6vh;
-	font-family: "arcade","Arial", sans-serif;
+	font-family: "arcade", "Arial", sans-serif;
 }
-.levelpointnumber{
+
+.levelpointnumber {
 	color: yellow;
 }
+
 /* 
 .mypointbutton{
 	height: 10vh;
@@ -239,21 +317,32 @@ body {
 	height: 3vh;
 } 
 */
-.mypointbutton{
+.mypointbutton {
 	height: 10vh;
 	width: 100%;
-	border-collapse: collapse; 
+	border-collapse: collapse;
 	text-align: center;
 	vertical-align: middle;
 }
-.mypointbutton tr td{
+
+.mypointbutton tr td {
 	width: 25%;
 	height: 25%;
 	background-color: black;
 }
-.mybutton_double,.mybutton_next,.mybutton_stop,.mybutton_run{
+
+.mybutton_double,
+.mybutton_next,
+.mybutton_stop,
+.mybutton_run {
 	visibility: hidden;
 }
-.add100,.add1000,.sub100,.sub1000,.mypointstart,.allin{
+
+.add100,
+.add1000,
+.sub100,
+.sub1000,
+.mypointstart,
+.allin {
 	visibility: hidden;
 }

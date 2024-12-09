@@ -46,12 +46,100 @@
 					<div class="deathcard" id="deathcard">
 					</div>
 					<div class="storyDIV" id="storyDIV">
-						<div class="gamebutton_start" id="gamebutton_start" style="visibility: hidden;">
+						<div class="gamebutton_start" id="gamebutton_start" style="display: none;">
 							<button type="button" onclick="GameStart()">
 								开始游戏
 							</button>
+							<div class="loadingDiv" id="loadingDiv" style="font-size: 50;display: block;">
+								loading...
+							</div>
 						</div>
-						
+						<div class="shopDIV" id="shopDIV">
+							<div class="shopitem" id="item_1" onclick="FiveMyItem(1)">
+								<img src="img/icon/Spade1.png"/>
+								<div>底牌隐去</div>
+								<div>使庄家无法得知你的第一张底牌</div>
+							</div>
+							<div class="shopitem" id="item_2" onclick="FiveMyItem(2)">
+								<img src="img/icon/Spade1.png"/>
+								<div>平局</div>
+								<div>点数相等时判定为平局</div>
+							</div>
+							<div class="shopitem" id="item_3" onclick="FiveMyItem(3)">
+								<img src="img/icon/Diamond1.png"/>
+								<div>ALL IN !!!</div>
+								<div>能够使用All In，首次归零时恢复100点数</div>
+							</div>
+							
+							<div class="shopitem" id="item_4" onclick="FiveMyItem(4)">
+								<img src="img/icon/Heart1.png"/>
+								<div>快手</div>
+								<div>主动：选择一张手牌，在叫牌时抽取两张，并将选中的牌置于顶端</div>
+							</div>
+							<div class="shopitem" id="item_5" onclick="FiveMyItem(5)">
+								<img src="img/icon/Club1.png"/>
+								<div>点数控制</div>
+								<div>你的总点数额外与剩余筹码的首位数字相加</div>
+							</div>
+							<div class="shopitem" id="item_6" onclick="FiveMyItem(6)">
+								<img src="img/icon/Club1.png"/>
+								<div>启动资金</div>
+								<div>一次性：你获得3000点数</div>
+							</div>
+							
+							<div class="shopitem" id="item_7" onclick="FiveMyItem(7)">
+								<img src="img/icon/Heart1.png"/>
+								<div>袖内抽卡</div>
+								<div>主动：能够保存卡牌，能够随时与底牌互换</div>
+							</div>
+							<div class="shopitem" id="item_8" onclick="FiveMyItem(8)">
+								<img src="img/icon/Heart1.png"/>
+								<div>釜底抽薪</div>
+								<div>主动：将你的底牌与庄家交换</div>
+							</div>
+							<div class="shopitem" id="item_9" onclick="FiveMyItem(9)">
+								<img src="img/icon/Spade1.png"/>
+								<div>小型大卡</div>
+								<div>10点卡将算为9点，不会影响BlackJack</div>
+							</div>
+							
+							<div class="shopitem" id="item_10" onclick="FiveMyItem(10)">
+								<img src="img/icon/Spade1.png"/>
+								<div>24点？</div>
+								<div>使游戏的点数上限改为24</div>
+							</div>
+							<div class="shopitem" id="item_11" onclick="FiveMyItem(11)">
+								<img src="img/icon/Spade1.png"/>
+								<div>强制表演</div>
+								<div>主动：本轮庄家至少持有四张牌（5轮冷却）</div>
+							</div>
+							<div class="shopitem" id="item_12" onclick="FiveMyItem(12)">
+								<img src="img/icon/Spade1.png"/>
+								<div>幸运A</div>
+								<div>持有Ace时，手牌总点数为21即可判定为BlackJack</div>
+							</div>
+							<div class="shopitem" id="item_13" onclick="FiveMyItem(13)">
+								<img src="img/icon/Heart1.png" />
+								<div>透视</div>
+								<div>主动：观察牌库顶的点数（3轮冷却）</div>
+							</div>
+							<div class="shopitem" id="item_14" onclick="FiveMyItem(14)">
+								<img src="img/icon/Spade1.png" />
+								<div>封锁</div>
+								<div>主动：本轮庄家禁止叫牌（5轮冷却）</div>
+							</div>
+							<div class="shopitem" id="item_15" onclick="FiveMyItem(15)">
+								<img src="img/icon/Heart1.png" />
+								<div>偷看</div>
+								<div>主动：你可以得知庄家的底牌（3轮冷却）</div>
+							</div>
+						</div>
+						<div class="shopskip" id="shopskip"  onclick="FiveMyItem(0)">
+							<div></div>
+							<div>需要:<div id="shopitemmoney"></div></div>
+							<div>跳过</div>
+							<div></div>
+						</div>
 					</div>
 				</div>
 				<div class="none2" id="none2">
@@ -126,22 +214,6 @@
 								</td>
 							</tr>
 						</table>
-						<!-- 
-						<div class="mypointbutton" id="mypointbutton">
-							<div class="mypointbuttonrow">
-								<div class="add100" id="add100" onclick="LevelPointAdd100">+100</div>
-								<div class="add1000" id="add0100" onclick="LevelPointAdd1000">+1000</div>
-							</div>
-							<div class="mypointbuttonrow">
-							<div class="sub100" id="sub100" onclick="LevelPointSub100">-100</div>
-							<div class="sub1000" id="sub1000" onclick="LevelPointSub1000">-1000</div>
-							</div>
-							<div class="mypointbuttonrow">
-								<div class="mypointstart" id="mypointstart" onclick="LevelPointStart">下注!</div>
-								<div class="allin" id="allin" onclick="LevelPointAllIn">All In!</div>
-							</div>
-						</div>
-						 -->
 					</div>
 
 				</div>
@@ -224,5 +296,6 @@
 		<script src="js/bosscard.js"></script>
 		<script src="js/boss.js"></script>
 		<script src="js/point.js"></script>
+		<script src="js/item.js"></script>
 	</body>
 </html>

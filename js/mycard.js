@@ -33,7 +33,7 @@ function GiveMyCard(card) {
 			break;
 		case 2:
 			color = "Club";
-			break;A
+			break;
 		case 3:
 			color = "Diamond";
 			break;

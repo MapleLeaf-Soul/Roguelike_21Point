@@ -42,10 +42,8 @@ function GameTurn() {
 		myBoom = true;
 		NowLevelPoint(-levelPoint);
 	}
-	if (myallCardScore == 21 || myCardNumber == 5) {
+	if (myallCardScore >= 21 || myCardNumber == 5) {
 		StopTurn();
-	}else if(myallCardScore > 21){
-		StopTurn()
 	} else {
 		//按钮
 		if (turnNumber == 0 && (myPoint >= 2 * levelPoint)) {
@@ -203,7 +201,7 @@ async function NumberTurn() {
 	myFiveNumber = false;
 	myBlackJack = false;
 	myBoom = false;
-	if(bossCardNumber == 5){
+	if(bossCardNumber == 5 && bossallCardScore <= 21){
 		bossFiveNumber = true;
 	}
 	else if(bossallCardScore == 21 && bossCardNumber == 2){
@@ -213,7 +211,7 @@ async function NumberTurn() {
 		bossBoom = true;
 	}
 	
-	if(myCardNumber == 5){
+	if(myCardNumber == 5 && myallCardScore <= 21){
 		myFiveNumber = true;
 	}
 	else if(myallCardScore == 21 && myCardNumber == 2){
