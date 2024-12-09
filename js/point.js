@@ -72,9 +72,9 @@ function LevelPointStart(){
 		document.getElementById('sub1000').style.visibility = 'hidden';
 		document.getElementById('mypointstart').style.visibility = 'hidden';
 		document.getElementById('allin').style.visibility = 'hidden';
+		NowMyPoint(-levelPoint);
 		GameTurnStart();
 	}else{
 		LevelPointAdd(100);
-		NowMyPoint(-levelPoint);
 	}
 }
