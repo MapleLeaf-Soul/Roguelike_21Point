@@ -1,0 +1,259 @@
+body {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	color: white;
+}
+
+* {
+	box-sizing: border-box;
+	/* border: 1px red solid; */
+}
+
+.box {
+	width: 100vw;
+	height: 100vh;
+	background-color: #4e952b;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	flex-direction: column;
+}
+
+.box div {
+	display: flex;
+	flex-wrap: nowrap;
+	/* justify-content: space-between; */
+}
+
+.boss {
+	width: 30vw;
+	height: 35vh;
+	justify-content: space-between;
+}
+.boss div{
+	position: relative;
+	width: 10vw;
+	height: 14vh;
+	overflow: hidden;
+	right:0px;
+	border: 3px white solid;
+	box-sizing: content-box;
+	margin: 5px;
+	/* clip-path:inset(0px 60px 150px 0px) */
+}
+.boss div img{
+	position: absolute;
+	width: 10vw;
+}
+
+.mastercarddiv{
+	width: 40vw;
+	height: 35vh;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	flex-direction: column;
+}
+.mastercardpoint{
+	width: 40vw;
+	height: 5vh;
+	align-items: center;
+	justify-content: space-between;
+}
+#masterbutton_score{
+	font-family: "arcade","Arial", sans-serif;
+	font-size: 50px;
+}
+
+.mastercard {
+	width: 40vw;
+	height: 30vh;
+	border: 5px #FFF solid;
+	border-top: 0px;
+	position: relative;
+	padding: 1vh 0;
+	overflow: hidden;
+}
+.mastercard img {
+	position: absolute;
+	height: 90%;
+	animation: mastercardin 0.5s ease-out;
+}
+
+@keyframes mastercardin {
+	from {
+		transform: translateY(20px);
+	}
+
+	to {
+		transform: translateY(0);
+	}
+}
+
+.levelpoint {
+	width: 30vw;
+	height: 35vh;
+}
+
+.none1,.none2 {
+	width: 30vw;
+	height: 30vh;
+}
+.conterDIV{
+	width: 40vw;
+	height: 30vh;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.deathcard {
+	width: 40vw;
+	height: 50%;
+	position: relative;
+}
+#deathcard {
+	display: none;
+}
+#storyDIV{
+	/* display: none; */
+}
+
+.deathcard img {
+	position: absolute;
+	float: left;
+	height: 100%;
+	animation: deathcardin 0.5s ease-out;
+}
+
+@keyframes deathcardin {
+	from {
+		transform: translateX(20px);
+		transform: translateY(-20px);
+	}
+
+	to {
+		transform: translateX(0);
+		transform: translateY(0);
+	}
+}
+
+.myitem {
+	width: 30vw;
+	height: 35vh;
+}
+
+.mycarddiv{
+	width: 40vw;
+	height: 35vh;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	flex-direction: column;
+}
+.mycardpoint{
+	width: 40vw;
+	height: 5vh;
+	align-items: center;
+	justify-content: space-between;
+}
+.mycardpoint div{
+	font-size: 22px;
+}
+#mybutton_score{
+	font-family: "arcade","Arial", sans-serif;
+	font-size: 50px;
+}
+
+.mycard {
+	width: 40vw;
+	height: 30vh;
+	position: relative;
+	padding: 1vh 0;
+	border: 5px #FFF solid;
+	border-bottom: 0px;
+	overflow: hidden;
+}
+
+.mycard img {
+	position: absolute;
+	height: 90%;
+	animation: mycardin 0.5s ease-out;
+}
+
+@keyframes mycardin {
+	from {
+		transform: translateY(-20px);
+	}
+
+	to {
+		transform: translateY(0);
+	}
+}
+
+.mypointdiv {
+	width: 30vw;
+	height: 35vh;
+}
+.mypointdiv div{
+	flex-direction: column;
+}
+.mypointimg{
+	width: 30vw;
+	height: 20vh;
+}
+.mypoint{
+	justify-content: space-between;
+}
+#mypoint{
+	height: 5vh;
+	flex-direction:row;
+	background-color: #092c00;
+}
+.mypointnumber,.levelpointnumber{
+	width: 40%;
+	align-items: center;
+	font-size: 6vh;
+	font-family: "arcade","Arial", sans-serif;
+}
+.levelpointnumber{
+	color: yellow;
+}
+/* 
+.mypointbutton{
+	height: 10vh;
+ 	flex-direction:row; 
+}
+#mypointbuttonrow{
+	height: 3vh;
+	flex-direction:row;
+}
+.mypointbuttonrow div{
+	width: 40%;
+	height: 3vh;
+} 
+*/
+.mypointbutton{
+	height: 10vh;
+	width: 100%;
+	border-collapse: collapse; 
+	text-align: center;
+	vertical-align: middle;
+}
+.mypointbutton tr td{
+	width: 25%;
+	height: 25%;
+	background-color: black;
+}
+.mybutton_double,.mybutton_next,.mybutton_stop,.mybutton_run{
+	visibility: hidden;
+}
+.add100,.add1000,.sub100,.sub1000,.mypointstart,.allin{
+	visibility: hidden;
+}
