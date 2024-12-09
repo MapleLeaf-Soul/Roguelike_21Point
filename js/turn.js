@@ -2,12 +2,14 @@
 async function GameStart() {
 	deathcard = document.getElementById('deathcard');
 	storyDIV = document.getElementById('storyDIV');
-	deathcard.style.display = 'block';
-	storyDIV.style.display = 'none';
+	deathcard.style.display = 'none';
+	storyDIV.style.display = 'block';
 	myPoint = 1000;
 	NowMyPoint();
-	await MakeDeathCard();
-	PointTurn();
+	document.getElementById('shopDIV').style.display = 'flex';
+	document.getElementById('shopskip').style.display = 'flex';
+	document.getElementById('gamebutton_start').style.display = 'none';
+	ItemRandom();
 }
 var turnNumber = 0;
 

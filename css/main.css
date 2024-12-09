@@ -157,25 +157,32 @@ body {
 		transform: translateY(0);
 	}
 }
-#shopDIV{
+
+#shopDIV {
 	display: none;
+	flex-direction: row;
 }
-.shopDIV,.storyDIV {
+
+.shopDIV,
+.storyDIV {
 	flex-wrap: nowrap;
 	justify-content: space-between;
 	flex-direction: column;
 	align-items: center;
 }
-#shopDIV > div{
+
+#shopDIV>div {
 	display: none;
 }
-#shopskip{
+
+#shopskip {
 	display: none;
 }
+
 #shopskip {
 	width: 40vw;
 	display: flax;
-	flex-direction:row;
+	flex-direction: row;
 	justify-content: space-between;
 }
 
@@ -184,14 +191,14 @@ body {
 	height: 27vh;
 	justify-content: space-between;
 	padding: 2%;
-	
+
 }
 
 .shopDIV>div {
 	width: 10vw;
 	height: 25vh;
 	display: block;
-	
+
 }
 
 .shopDIV div {
@@ -205,15 +212,36 @@ body {
 	width: auto;
 	height: auto;
 	object-position: center;
+	object-fit: contain;
 }
 
 .shopDIV div div {
 	margin: 5% 0px;
 }
 
-.myitem {
+#myitem {
 	width: 30vw;
 	height: 35vh;
+	display: flex;
+}
+.myitem table tr {
+    display: flex;
+}
+.myitem table tr td {
+	flex-direction: column;
+	display: flex;
+	height: 17vh;
+	width: 10vw;
+	align-items: center;
+	justify-content: center;
+}
+.myitem table tr td img{
+	max-height: 50%;
+	max-width: 100%;
+	width: auto;
+	height: auto;
+	object-position: center;
+	object-fit: contain;
 }
 
 .mycarddiv {
