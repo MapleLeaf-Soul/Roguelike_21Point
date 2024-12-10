@@ -53,11 +53,12 @@ function GiveBossCard(card) {
 	img.setAttribute('data-cardNumber', bossCardNumber);
 	bossCardNumber++;
 	
-	MakeDeathCardSubtract()
+	MakeDeathCardSubtract();
 	bosscard.appendChild(img);
 
 	bossCardLeftChange();
-	bossCardScore()
+	bossCardScore();
+	console.log("mycard" + card);
 }
 
 //屏幕改变时激活

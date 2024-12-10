@@ -63,6 +63,7 @@ function GiveMyCard(card) {
 
 	myCardLeftChange();
 	myCardScore();
+	console.log("mycard" + card);
 }
 
 //屏幕改变时激活

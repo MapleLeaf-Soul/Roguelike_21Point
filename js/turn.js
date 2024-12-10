@@ -125,6 +125,7 @@ async function BossTurn() {
 	bossCardScore();
 	await delay(1000);
 	if (itemOn_11) {
+		console.log("showtime");
 		GiveBossCard();
 		await delay(1000);
 		GiveBossCard();
@@ -136,6 +137,7 @@ async function BossTurn() {
 		}
 		NumberTurn();
 	} else if (itemOn_12) {
+		console.log("shine");
 		itemOn_12 = false;
 		NumberTurn();
 	} else {
@@ -226,7 +228,7 @@ async function NumberTurn() {
 	document.getElementById('mybutton_next').style.visibility = 'hidden';
 	document.getElementById('mybutton_stop').style.visibility = 'hidden';
 	document.getElementById('mybutton_run').style.visibility = 'hidden';
-	console.log(myCardNumber);
+	console.log("myCardNumber" + myCardNumber);
 	bossFiveNumber = false;
 	bossBlackJack = false;
 	bossBoom = false;
@@ -275,6 +277,10 @@ async function NumberTurn() {
 //下一回合
 function TextNextTurn() {
 	document.getElementById('nonetext').textContent = "";
+	console.log("透视CD" + itemColdTime_9);
+	console.log("偷看CD" + itemColdTime_10);
+	console.log("强制表演CD" + itemColdTime_11);
+	console.log("封锁CD" + itemColdTime_12);
 	if (itemColdTime_9 <= 0) {
 		document.getElementById(`myitem_${item_9ClickID}`).style.border = 'yellow 2px solid';
 	} else {

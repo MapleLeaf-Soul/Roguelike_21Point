@@ -34,6 +34,7 @@ function RandomCard(){
 		acheCard = Math.floor(Math.random() * 52);
 		if (!cardInDeath.includes(acheCard)) {
 			card = acheCard;
+			console.log("random" + card);
 			return card;
 		}
 	}
@@ -66,6 +67,7 @@ function Item13Card(){
 	item_13Card.setAttribute('data-cardNumber', myCardNumber);
 	item_13Card.setAttribute('data-cardInfo', card);
 	cardInDeath.push(card);
+	console.log("hands" + card);
 }
 
 

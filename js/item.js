@@ -17,7 +17,6 @@ function ItemRandom(){
 			allThisItem.push(acheItem);
 			document.getElementById(`item_${item}`).style.display = 'flex';
 			thistime ++;
-			console.log(item);
 			if(thistime >= 3){
 				break;
 			}
