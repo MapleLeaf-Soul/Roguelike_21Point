@@ -77,6 +77,9 @@ function DoubleButton() {
 	NowMyPoint(-levelPoint);
 	NowLevelPoint(levelPoint);
 	GiveMyCard();
+	if(itemOn_13){
+		Item13Card();
+	}
 	StopTurn()
 }
 
@@ -87,6 +90,9 @@ function NextButton() {
 	document.getElementById('mybutton_stop').style.visibility = 'hidden';
 	document.getElementById('mybutton_run').style.visibility = 'hidden';
 	GiveMyCard();
+	if(itemOn_13){
+		Item13Card();
+	}
 	GameTurn();
 }
 
@@ -267,9 +273,6 @@ async function NumberTurn() {
 //下一回合
 function TextNextTurn() {
 	document.getElementById('nonetext').textContent = "";
-	itemColdTime_10--;
-	itemColdTime_11--;
-	itemColdTime_12--;
 	if (itemColdTime_9 <= 0) {
 		document.getElementById(`myitem_${item_9ClickID}`).style.border = 'yellow 2px solid';
 	} else {
@@ -291,6 +294,10 @@ function TextNextTurn() {
 	} else {
 		itemColdTime_12--;
 	}
+	itemOn_13 = false;
+	document.getElementById(`myitem_${item_13ClickID}`).style.border = 'yellow 2px solid';
+	itemOn_15 = false;
+	document.getElementById(`myitem_${item_15ClickID}`).style.border = 'yellow 2px solid';
 	CleanMyCard();
 	CleanbossCard();
 	haveAce = false;
@@ -373,5 +380,6 @@ function EndGame() {
 	allMyItemNumber = 0;
 	allinButton = false;
 	gamePointMax = 21;
+	isCardFirstBlack = 13;
 	GameStart();
 }

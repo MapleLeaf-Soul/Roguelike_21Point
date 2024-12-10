@@ -274,7 +274,7 @@ body {
 	width: 40vw;
 	height: 30vh;
 	position: relative;
-	padding: 1vh 0;
+	padding: 2vh 0;
 	border: 5px #FFF solid;
 	border-bottom: 0px;
 	overflow: hidden;
@@ -284,6 +284,11 @@ body {
 	position: absolute;
 	height: 90%;
 	animation: mycardin 0.5s ease-out;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	transform: translateY(0);
+}
+.mycard img:hover {
+    transform: translateY(-1vh);
 }
 
 @keyframes mycardin {

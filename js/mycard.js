@@ -5,17 +5,23 @@ var haveAce = false;
 function GiveMyCard(card) {
 	//随机
 	if (card === undefined) {
-		if(itemOn_9){
+		if (nextCard != -1) {
 			card = nextCard;
 			itemOn_9 = false;
+			NextCard = -1;
 			document.querySelector(`#myitem_${item_9ClickID} img`).src = 'img/icon/Heart1.png';
+		} else if(item_13NextCard != -1){
+			card = item_13NextCard;
+			item_13NextCard = -1;
 		}else{
 			card = RandomCard();
 		}
 	}
 	//标记已抽卡
-	cardInDeath.push(card);
-	if((card % 13 + 1) == 1){
+	if (!cardInDeath.includes(card)) {
+		cardInDeath.push(card);
+	}
+	if ((card % 13 + 1) == 1) {
 		haveAce = true;
 	}
 
@@ -40,16 +46,16 @@ function GiveMyCard(card) {
 	img.src = `img/Card/${color}${(card % 13) + 1}.png`;
 	img.id = `mycardimg${myCardNumber}`;
 	img.style.left = '0';
-	if(itemOn_6){
+	if (itemOn_6) {
 		img.setAttribute('data-cardPiont', (((card % 13) + 1) > 9 ? 9 : ((card % 13) + 1)));
-	}else{
+	} else {
 		img.setAttribute('data-cardPiont', (((card % 13) + 1) > 10 ? 10 : ((card % 13) + 1)));
 	}
-	
+
 	img.setAttribute('data-cardNumber', myCardNumber);
-	img.onclick = () => {
-		window[`myCardImgClick${myCardNumber}`](); // 调用对应的函数
-	};
+	img.setAttribute('data-cardInfo', card);
+	
+	img.setAttribute('onclick', `myCardImgClick(${myCardNumber})`);
 	myCardNumber++;
 
 	MakeDeathCardSubtract();
@@ -182,7 +188,7 @@ function myCardScore() {
 		myallCardScore = (card0Score + card1Score + card2Score + card3Score + card4Score);
 	}
 
-	if(itemOn_4){
+	if (itemOn_4) {
 		myallCardScore += parseInt(myPoint.toString()[0]);
 	}
 
@@ -195,22 +201,21 @@ function CleanMyCard() {
 	document.getElementById('mycard').innerHTML = '';
 }
 
-function myCardImgClick0() {
-
-}
-
-function myCardImgClick1() {
-
-}
-
-function myCardImgClick2() {
-
-}
-
-function myCardImgClick3() {
-
-}
-
-function myCardImgClick4() {
-
+function myCardImgClick(cardID) {
+	item_13Card = document.getElementById(`mycardimg${cardID}`);
+	if(itemOn_13){
+		switch(myCardNumber){
+			case 5:
+			document.getElementById('mycardimg4').style.transform = 'translateY(0)';
+			case 4:
+			document.getElementById('mycardimg3').style.transform = 'translateY(0)';
+			case 3:
+			document.getElementById('mycardimg2').style.transform = 'translateY(0)';
+			case 2:
+			document.getElementById('mycardimg1').style.transform = 'translateY(0)';
+			case 1:
+			document.getElementById('mycardimg0').style.transform = 'translateY(0)';
+		}
+		item_13Card.style.transform = 'translateY(-1vh)';
+	}
 }

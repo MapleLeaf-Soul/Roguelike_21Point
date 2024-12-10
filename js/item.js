@@ -11,7 +11,7 @@ function ItemRandom(){
 	thistime = 0;
 	document.getElementById('shopitemmoney').textContent = `${allMyItemNumber*1000}`
 	while(true){
-		let acheItem = Math.floor(Math.random() * 12 + 1);
+		let acheItem = Math.floor(Math.random() * isCardFirstBlack + 1);
 		if (!allMyItem.includes(acheItem) && !allThisItem.includes(acheItem)) {
 			let item = acheItem;
 			allThisItem.push(acheItem);
@@ -135,7 +135,22 @@ async function GiveMyItem(itemID){
 			itemOn_13 = false;
 			break;
 			case 14:
-			img.src = 'img/icon/Heart1.png';
+			let color;
+			switch (Math.floor(item_14Card / 13)) {
+				case 0:
+					color = "Spade";
+					break;
+				case 1:
+					color = "Heart";
+					break;
+				case 2:
+					color = "Club";
+					break;
+				case 3:
+					color = "Diamond";
+					break;
+			}
+			img.src = `img/Card/${color}${(card % 13) + 1}.png`;
 			div.textContent = '袖内抽卡';
 			borderColor = 'yellow';
 			itemOn_14 = false;
@@ -170,10 +185,17 @@ var itemColdTime_11 = 0;
 var itemColdTime_12 = 0;
 
 var nextCard = -1;
+var item_13NextCard = -1;
+var item_13Card;
+var item_14Card = RandomCard();
+
 var item_9ClickID = 0;
 var item_10ClickID = 0;
 var item_11ClickID = 0;
 var item_12ClickID = 0;
+var item_13ClickID = 0;
+var item_14ClickID = 0;
+var item_15ClickID = 0;
 
 
 async function MyItemClick(ClickID){
@@ -200,7 +222,13 @@ async function MyItemClick(ClickID){
 			itemColdTime_9 = 3;
 			itemOn_9 = true;
 			item_9ClickID = ClickID;
-			nextCard = RandomCard();
+			if(item_13NextCard != -1){
+				nextCard = item_13NextCard;
+				item_13NextCard = -1;
+			}else{
+				nextCard = RandomCard();
+			}
+			
 			nextCardImg = document.querySelector(`#myitem_${ClickID} img`);
 			let color;
 			switch (Math.floor(nextCard / 13)) {
@@ -247,20 +275,21 @@ async function MyItemClick(ClickID){
 		break;
 		case 13:
 		borderColor = 'red';
-		if(itemOn_13){
-			itemOn_13 = false;
+		if(!itemOn_13){
+			itemOn_13 = true;
+			item_13ClickID = ClickID;
 		}
 		break;
 		case 14:
-		borderColor = 'red';
-		if(itemOn_14){
-			itemOn_14 = false;
-		}
+			item_14ClickID = ClickID;
+			Item14Card();
 		break;
 		case 15:
 		borderColor = 'red';
-		if(itemOn_15){
-			itemOn_15 = false;
+		if(!itemOn_15){
+			itemOn_15 = true;
+			item_15ClickID = ClickID;
+			Item15Card();
 		}
 		break;
 	}

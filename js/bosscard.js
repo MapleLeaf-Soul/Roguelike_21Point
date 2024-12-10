@@ -5,15 +5,22 @@ var bossCardFirstPoint = 0;
 function GiveBossCard(card) {
 	//随机
 	if (card === undefined) {
-		if(itemOn_9){
+		if (nextCard != -1) {
 			card = nextCard;
 			itemOn_9 = false;
+			NextCard = -1;
+			document.querySelector(`#myitem_${item_9ClickID} img`).src = 'img/icon/Heart1.png';
+		} else if(item_13NextCard != -1){
+			card = item_13NextCard;
+			item_13NextCard = -1;
 		}else{
 			card = RandomCard();
 		}
 	}
 	//标记已抽卡
-	cardInDeath.push(card);
+	if (!cardInDeath.includes(acheCard)) {
+		cardInDeath.push(card);
+	}
 	//显示手卡
 	bosscard = document.getElementById('mastercard');
 	img = document.createElement('img');
@@ -44,9 +51,6 @@ function GiveBossCard(card) {
 	img.id = `bosscardimg${bossCardNumber}`;
 	img.style.left = '0';
 	img.setAttribute('data-cardNumber', bossCardNumber);
-	img.onclick = () => {
-		window[`bossCardImgClick${bossCardNumber}`](); // 调用对应的函数
-	};
 	bossCardNumber++;
 	
 	MakeDeathCardSubtract()
@@ -185,24 +189,4 @@ function bossCardScore() {
 function CleanbossCard(){
 	bossCardNumber = 0;
 	document.getElementById('mastercard').innerHTML = '';
-}
-
-function bossCardImgClick0() {
-
-}
-
-function bossCardImgClick1() {
-
-}
-
-function bossCardImgClick2() {
-
-}
-
-function bossCardImgClick3() {
-
-}
-
-function bossCardImgClick4() {
-
 }
