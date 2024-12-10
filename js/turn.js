@@ -79,6 +79,7 @@ function DoubleButton() {
 	GiveMyCard();
 	if(itemOn_13){
 		Item13Card();
+		itemOn_13 = false;
 	}
 	StopTurn()
 }
@@ -338,7 +339,18 @@ async function GameNext() {
 	document.getElementById('shopDIV').style.display = 'flex';
 	document.getElementById('shopskip').style.display = 'flex';
 	document.getElementById('gamebutton_start').style.display = 'none';
-	ItemRandom();
+	if(allMyItemNumber < 6){
+		ItemRandom();
+	}else{
+		cardInDeath = [];
+		document.getElementById('deathcard').style.display = 'block';
+		document.getElementById('storyDIV').style.display = 'none';
+		document.getElementById('shopDIV').style.display = 'none';
+		document.getElementById('shopskip').style.display = 'none';
+		document.getElementById('gamebutton_start').style.display = 'flex';
+		await MakeDeathCard();
+		PointTurn();
+	}
 }
 
 function EndGame() {

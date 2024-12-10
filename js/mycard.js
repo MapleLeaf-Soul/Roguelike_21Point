@@ -62,7 +62,7 @@ function GiveMyCard(card) {
 	mycard.appendChild(img);
 
 	myCardLeftChange();
-	myCardScore()
+	myCardScore();
 }
 
 //屏幕改变时激活

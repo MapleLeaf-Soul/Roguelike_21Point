@@ -44,7 +44,7 @@ var itemOn_15 = false;
 async function GiveMyItem(itemID){
 	if(itemID == 0){
 		
-	}else if(myPoint < allMyItemNumber*1000 && itemID != 8){
+	}else if(myPoint <= allMyItemNumber*1000 && itemID != 8){
 		return;
 	}else{
 		allMyItem.push(itemID);
