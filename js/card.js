@@ -24,6 +24,20 @@ function MakeDeathCardSubtract() {
 	DeathCard.removeChild(DeathCard.lastChild);
 }
 
+//随机发牌
+function RandomCard(){
+	while (true) {
+		if (cardInDeath.length == DeathCardNumber) {
+			NumberTurn();
+			return;
+		}
+		acheCard = Math.floor(Math.random() * 52);
+		if (!cardInDeath.includes(acheCard)) {
+			card = acheCard;
+			return card;
+		}
+	}
+}
 
 function Text() {
 	console.log("click");

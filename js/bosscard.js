@@ -1,21 +1,15 @@
 var bossCardNumber = 0;
 var bossCardFirst = 'img/Card/Background.png'
 var bossCardFirstPoint = 0;
-var playerTurn = true;
 //给己方发牌，可以传参
 function GiveBossCard(card) {
 	//随机
 	if (card === undefined) {
-		while (true) {
-			if(cardInDeath.length == DeathCardNumber){
-				NumberTurn();
-				return;
-			}
-			acheCard = Math.floor(Math.random() * 52);
-			if (!cardInDeath.includes(acheCard)) {
-				card = acheCard;
-				break;
-			}
+		if(itemOn_9){
+			card = nextCard;
+			itemOn_9 = false;
+		}else{
+			card = RandomCard();
 		}
 	}
 	//标记已抽卡

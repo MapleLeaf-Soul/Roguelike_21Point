@@ -5,16 +5,12 @@ var haveAce = false;
 function GiveMyCard(card) {
 	//随机
 	if (card === undefined) {
-		while (true) {
-			if (cardInDeath.length == DeathCardNumber) {
-				NumberTurn();
-				return;
-			}
-			acheCard = Math.floor(Math.random() * 52);
-			if (!cardInDeath.includes(acheCard)) {
-				card = acheCard;
-				break;
-			}
+		if(itemOn_9){
+			card = nextCard;
+			itemOn_9 = false;
+			document.querySelector(`#myitem_${item_9ClickID} img`).src = 'img/icon/Heart1.png';
+		}else{
+			card = RandomCard();
 		}
 	}
 	//标记已抽卡
@@ -45,9 +41,9 @@ function GiveMyCard(card) {
 	img.id = `mycardimg${myCardNumber}`;
 	img.style.left = '0';
 	if(itemOn_6){
-		img.setAttribute('data-cardPiont', (((card % 13) + 1) > 10 ? 10 : ((card % 13) + 1)));
-	}else{
 		img.setAttribute('data-cardPiont', (((card % 13) + 1) > 9 ? 9 : ((card % 13) + 1)));
+	}else{
+		img.setAttribute('data-cardPiont', (((card % 13) + 1) > 10 ? 10 : ((card % 13) + 1)));
 	}
 	
 	img.setAttribute('data-cardNumber', myCardNumber);

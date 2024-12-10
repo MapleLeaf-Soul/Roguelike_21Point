@@ -1,17 +1,17 @@
 //初始化开始游戏
 var gamePointMax = 21
+var playerTurn = false;
 
 async function GameStart() {
-	deathcard = document.getElementById('deathcard');
-	storyDIV = document.getElementById('storyDIV');
-	deathcard.style.display = 'none';
-	storyDIV.style.display = 'block';
+	document.getElementById('deathcard').style.display = 'none';
+	document.getElementById('storyDIV').style.display = 'block';
 	myPoint = 1000;
 	NowMyPoint();
 	document.getElementById('shopDIV').style.display = 'flex';
 	document.getElementById('shopskip').style.display = 'flex';
 	document.getElementById('gamebutton_start').style.display = 'none';
 	ItemRandom();
+	BossRandom();
 }
 var turnNumber = 0;
 
@@ -29,20 +29,18 @@ async function GameTurnStart() {
 	GiveBossCard();
 	await delay(200);
 	GameTurn();
-	BossRandom();
+
 }
 
 //发牌回合
 function GameTurn() {
-	if(myCardNumber == 5){
+	if (myCardNumber == 5) {
 		myFiveNumber = true;
 		NowLevelPoint(levelPoint)
-	}
-	else if(myallCardScore == 21 && myCardNumber == 2){
+	} else if (myallCardScore == 21 && myCardNumber == 2) {
 		myBlackJack = true;
 		NowLevelPoint(2 * levelPoint)
-	}
-	else if(myallCardScore > gamePointMax){
+	} else if (myallCardScore > gamePointMax) {
 		myBoom = true;
 		NowLevelPoint(-levelPoint);
 	}
@@ -67,6 +65,7 @@ function GameTurn() {
 		}
 	}
 	turnNumber++;
+	playerTurn = true;
 }
 
 //双倍
@@ -117,62 +116,80 @@ async function BossTurn() {
 	document.getElementById('bosscardimg0').setAttribute('data-cardPiont', bossCardFirstPoint);
 	bossCardScore();
 	await delay(1000);
-	switch (bossType[bossTurnNumber]) {
-		case 0:
-			NoobBoss();
-			break;
+	if (itemOn_11) {
+		GiveBossCard();
+		await delay(1000);
+		GiveBossCard();
+		await delay(1000);
+		itemOn_11 = false;
+		if (bossallCardScore + 5 <= gamePointMax) {
+			GiveBossCard();
+			await delay(1000);
+		}
+		NumberTurn();
+	} else if (itemOn_12) {
+		itemOn_12 = false;
+		NumberTurn();
+	} else {
+		switch (bossType[bossTurnNumber]) {
+			case 0:
+				NoobBoss();
+				break;
+		}
 	}
+
 }
 
 //保险判定
 async function RunTurn() {
-	if (bossCardFirstPoint == 10){
+	if (bossCardFirstPoint == 10) {
 		document.getElementById('bosscardimg0').src = bossCardFirst;
 		await delay(100);
 		document.getElementById('bosscardimg0').setAttribute('data-cardPiont', bossCardFirstPoint);
 		bossCardScore();
-		document.getElementById('nonetext').textContent = "保险啦！";
+		document.getElementById('nonetext').textContent = "理赔成功！";
 		await delay(3000);
 		TextNextTurn();
-	}else{
-		NowLevelPoint(- levelPoint / 2);
+		playerTurn = false;
+	} else {
+		NowLevelPoint(-levelPoint / 2);
 		GameTurn();
 	}
 }
 
 //下注按钮回合
-function PointTurn(){
-	if(add100Button){
+function PointTurn() {
+	if (add100Button) {
 		document.getElementById('add100').style.visibility = 'visible';
-	}else{
+	} else {
 		document.getElementById('add100').style.visibility = 'hidden';
 	}
-	if(add1000Button){
+	if (add1000Button) {
 		document.getElementById('add1000').style.visibility = 'visible';
-	}else{
+	} else {
 		document.getElementById('add1000').style.visibility = 'hidden';
 	}
-	if(sub100Button){
+	if (sub100Button) {
 		document.getElementById('sub100').style.visibility = 'visible';
-	}else{
+	} else {
 		document.getElementById('sub100').style.visibility = 'hidden';
 	}
-	if(sub1000Button){
+	if (sub1000Button) {
 		document.getElementById('sub1000').style.visibility = 'visible';
-	}else{
+	} else {
 		document.getElementById('sub1000').style.visibility = 'hidden';
 	}
-	if(mypointstartButton){
+	if (mypointstartButton) {
 		document.getElementById('mypointstart').style.visibility = 'visible';
-	}else{
+	} else {
 		document.getElementById('mypointstart').style.visibility = 'hidden';
 	}
-	if(allinButton){
+	if (allinButton) {
 		document.getElementById('allin').style.visibility = 'visible';
-	}else{
+	} else {
 		document.getElementById('allin').style.visibility = 'hidden';
 	}
-	
+
 }
 
 
@@ -185,6 +202,7 @@ async function StopTurn() {
 		await delay(1000);
 		BossTurn();
 	}
+	playerTurn = false;
 }
 
 //点数结算
@@ -207,53 +225,72 @@ async function NumberTurn() {
 	myFiveNumber = false;
 	myBlackJack = false;
 	myBoom = false;
-	if(bossCardNumber == 5 && bossallCardScore <= gamePointMax){
+	if (bossCardNumber == 5 && bossallCardScore <= gamePointMax) {
 		bossFiveNumber = true;
-	}
-	else if(bossallCardScore == 21 && bossCardNumber == 2){
+	} else if (bossallCardScore == 21 && bossCardNumber == 2) {
 		bossBlackJack = true;
-	}
-	else if(bossallCardScore > gamePointMax){
+	} else if (bossallCardScore > gamePointMax) {
 		bossBoom = true;
 	}
-	
-	if(myCardNumber == 5 && myallCardScore <= gamePointMax){
+
+	if (myCardNumber == 5 && myallCardScore <= gamePointMax) {
 		myFiveNumber = true;
-	}
-	else if(myallCardScore == 21 && myCardNumber == 2){
+	} else if (myallCardScore == 21 && myCardNumber == 2) {
 		myBlackJack = true;
-	}
-	else if(itemOn_6 && myallCardScore == 20 && myCardNumber == 2){
+	} else if (itemOn_6 && myallCardScore == 20 && myCardNumber == 2) {
 		myBlackJack = true;
-	}
-	else if(itemOn_5 && myallCardScore == 21 && haveAce){
+	} else if (itemOn_5 && myallCardScore == 21 && haveAce) {
 		myBlackJack = true;
-	}
-	else if(myallCardScore > gamePointMax){
+	} else if (myallCardScore > gamePointMax) {
 		myBoom = true;
 	}
-	
-	if (myBoom || (bossFiveNumber && !myFiveNumber && !myBlackJack) || (bossBlackJack && !myBlackJack) || (!bossBoom && bossallCardScore > myallCardScore)){
+
+	if (myBoom || (bossFiveNumber && !myFiveNumber && !myBlackJack) || (bossBlackJack && !myBlackJack) || (!
+			bossBoom && bossallCardScore > myallCardScore)) {
 		document.getElementById('nonetext').textContent = "输！"
 		NowLevelPoint(-levelPoint);
-	}else if(bossBoom || (myFiveNumber && !bossFiveNumber && !bossBlackJack) || (myBlackJack && !bossBlackJack) || (!myBoom && myallCardScore > bossallCardScore)){
+	} else if (bossBoom || (myFiveNumber && !bossFiveNumber && !bossBlackJack) || (myBlackJack && !bossBlackJack) ||
+		(!myBoom && myallCardScore > bossallCardScore)) {
 		document.getElementById('nonetext').textContent = "赢！"
 		NowLevelPoint(levelPoint);
-	}else if(itemOn_2){
+	} else if (itemOn_2) {
 		document.getElementById('nonetext').textContent = "平！"
-	}else{
+	} else {
 		document.getElementById('nonetext').textContent = "输！"
 		NowLevelPoint(-levelPoint);
 	}
-	
+
 	await delay(1000);
 	TextNextTurn();
-	
-	document.getElementById('nonetext').textContent ="";
 }
 
 //下一回合
 function TextNextTurn() {
+	document.getElementById('nonetext').textContent = "";
+	itemColdTime_10--;
+	itemColdTime_11--;
+	itemColdTime_12--;
+	if (itemColdTime_9 <= 0) {
+		document.getElementById(`myitem_${item_9ClickID}`).style.border = 'yellow 2px solid';
+	} else {
+		itemColdTime_9--;
+	}
+	if (itemColdTime_10 <= 0) {
+		document.getElementById(`myitem_${item_10ClickID}`).style.border = 'yellow 2px solid';
+	} else {
+		document.querySelector(`#myitem_${item_10ClickID} img`).src = 'img/icon/Heart1.png';
+		itemColdTime_10--;
+	}
+	if (itemColdTime_11 <= 0) {
+		document.getElementById(`myitem_${item_11ClickID}`).style.border = 'yellow 2px solid';
+	} else {
+		itemColdTime_11--;
+	}
+	if (itemColdTime_12 <= 0) {
+		document.getElementById(`myitem_${item_12ClickID}`).style.border = 'yellow 2px solid';
+	} else {
+		itemColdTime_12--;
+	}
 	CleanMyCard();
 	CleanbossCard();
 	haveAce = false;
@@ -263,29 +300,78 @@ function TextNextTurn() {
 	bossCardScore();
 	NowMyPoint(levelPoint);
 	NowLevelPoint(-levelPoint);
-	if(myPoint <= 0 && itemOn_3){
+	if (myPoint <= 0 && itemOn_3) {
 		itemOn_3 = false;
 		myPoint = 100;
 		NowMyPoint();
+	} else if (myPoint <= 0) {
+		EndGame();
+		return;
 	}
-	if(myPoint > 2000){
+	if (myPoint > 2000) {
 		add1000Button = true;
 		sub1000Button = true;
-	}else{
+	} else {
 		add1000Button = false;
 		sub1000Button = false;
 	}
-	if(DeathCardNumber - cardInDeath.length > 4){
+	if (DeathCardNumber - cardInDeath.length > 4) {
 		PointTurn();
-	}else{
+	} else {
 		GameNext();
 	}
-	
+
 }
 
-async function GameNext(){
+async function GameNext() {
 	cardInDeath = [];
 	document.getElementById('deathcard').replaceChildren();
-	await MakeDeathCard();
-	PointTurn();
+	document.getElementById('deathcard').style.display = 'none';
+	document.getElementById('storyDIV').style.display = 'block';
+	document.getElementById('shopDIV').style.display = 'flex';
+	document.getElementById('shopskip').style.display = 'flex';
+	document.getElementById('gamebutton_start').style.display = 'none';
+	ItemRandom();
+}
+
+function EndGame() {
+	alert("游戏结束");
+	cardInDeath = [];
+	document.getElementById('deathcard').replaceChildren();
+	document.getElementById('myitem_1').replaceChildren();
+	document.getElementById('myitem_1').style.border = 'none';
+	document.getElementById('myitem_2').replaceChildren();
+	document.getElementById('myitem_2').style.border = 'none';
+	document.getElementById('myitem_3').replaceChildren();
+	document.getElementById('myitem_3').style.border = 'none';
+	document.getElementById('myitem_4').replaceChildren();
+	document.getElementById('myitem_4').style.border = 'none';
+	document.getElementById('myitem_5').replaceChildren();
+	document.getElementById('myitem_5').style.border = 'none';
+	document.getElementById('myitem_6').replaceChildren();
+	document.getElementById('myitem_6').style.border = 'none';
+	itemOn_1 = false;
+	itemOn_2 = false;
+	itemOn_3 = false;
+	itemOn_4 = false;
+	itemOn_5 = false;
+	itemOn_6 = false;
+	itemOn_7 = false;
+	itemOn_8 = false;
+	itemOn_9 = false;
+	itemOn_10 = false;
+	itemOn_11 = false;
+	itemOn_12 = false;
+	itemOn_13 = false;
+	itemOn_14 = false;
+	itemOn_15 = false;
+	itemColdTime_9 = 0;
+	itemColdTime_10 = 0;
+	itemColdTime_11 = 0;
+	itemColdTime_12 = 0;
+	allMyItem = [];
+	allMyItemNumber = 0;
+	allinButton = false;
+	gamePointMax = 21;
+	GameStart();
 }

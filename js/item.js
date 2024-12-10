@@ -11,7 +11,7 @@ function ItemRandom(){
 	thistime = 0;
 	document.getElementById('shopitemmoney').textContent = `${allMyItemNumber*1000}`
 	while(true){
-		let acheItem = Math.floor(Math.random() * isCardFirstBlack + 1);
+		let acheItem = Math.floor(Math.random() * 12 + 1);
 		if (!allMyItem.includes(acheItem) && !allThisItem.includes(acheItem)) {
 			let item = acheItem;
 			allThisItem.push(acheItem);
@@ -33,10 +33,18 @@ var itemOn_4 = false;
 var itemOn_5 = false;
 var itemOn_6 = false;
 var itemOn_7 = false;
+var itemOn_8 = false;
+var itemOn_9 = false;
+var itemOn_10 = false;
+var itemOn_11 = false;
+var itemOn_12 = false;
+var itemOn_13 = false;
+var itemOn_14 = false;
+var itemOn_15 = false;
 async function GiveMyItem(itemID){
 	if(itemID == 0){
 		
-	}else if(myPoint < allMyItemNumber*1000){
+	}else if(myPoint < allMyItemNumber*1000 && itemID != 8){
 		return;
 	}else{
 		allMyItem.push(itemID);
@@ -59,7 +67,7 @@ async function GiveMyItem(itemID){
 			itemOn_2 = true;
 			break;
 			case 3:
-			img.src = 'img/icon/Spade1.png';
+			img.src = 'img/icon/Diamond1.png';
 			div.textContent = 'ALL IN !!!';
 			borderColor = 'white';
 			itemOn_3 = true;
@@ -100,46 +108,48 @@ async function GiveMyItem(itemID){
 			img.src = 'img/icon/Heart1.png';
 			div.textContent = '透视';
 			borderColor = 'yellow';
-			itemOn_9 = true;
+			itemOn_9 = false;
 			break;
 			case 10:
 			img.src = 'img/icon/Heart1.png';
 			div.textContent = '偷看';
 			borderColor = 'yellow';
-			itemOn_10 = true;
+			itemOn_10 = false;
 			break;
 			case 11:
 			img.src = 'img/icon/Spade1.png';
 			div.textContent = '强制表演';
 			borderColor = 'yellow';
-			itemOn_11 = true;
+			itemOn_11 = false;
 			break;
 			case 12:
 			img.src = 'img/icon/Spade1.png';
 			div.textContent = '封锁';
 			borderColor = 'yellow';
-			itemOn_12 = true;
+			itemOn_12 = false;
 			break;
 			case 13:
 			img.src = 'img/icon/Heart1.png';
 			div.textContent = '快手';
 			borderColor = 'yellow';
-			itemOn_13 = true;
+			itemOn_13 = false;
 			break;
 			case 14:
 			img.src = 'img/icon/Heart1.png';
 			div.textContent = '袖内抽卡';
 			borderColor = 'yellow';
-			itemOn_14 = true;
+			itemOn_14 = false;
 			break;
 			case 15:
 			img.src = 'img/icon/Heart1.png';
 			div.textContent = '釜底抽薪';
 			borderColor = 'yellow';
-			itemOn_15 = true;
+			itemOn_15 = false;
 			break;
 		}
-		NowMyPoint(-(allMyItemNumber - 1) * 1000);
+		if (itemID != 8){
+			NowMyPoint(-(allMyItemNumber - 1) * 1000);
+		}
 		myItem.style.border = `${borderColor} 2px solid`;
 		myItem.appendChild(img);
 		myItem.appendChild(div);
@@ -158,12 +168,18 @@ var itemColdTime_9 = 0;
 var itemColdTime_10 = 0;
 var itemColdTime_11 = 0;
 var itemColdTime_12 = 0;
-var itemOn_8 = false;
-var itemOn_13 = false;
-var itemOn_14 = false;
-var itemOn_15 = false;
+
+var nextCard = -1;
+var item_9ClickID = 0;
+var item_10ClickID = 0;
+var item_11ClickID = 0;
+var item_12ClickID = 0;
+
 
 async function MyItemClick(ClickID){
+	if(!playerTurn){
+		return;
+	}
 	let myItem = document.getElementById(`myitem_${ClickID}`);
 	let itemID = allMyItem[ClickID-1];
 	let borderColor;
@@ -176,28 +192,57 @@ async function MyItemClick(ClickID){
 		}
 		break;
 		case 9:
+		if(cardInDeath.length == DeathCardNumber){
+			return;
+		}
 		borderColor = 'red';
 		if(itemColdTime_9 <= 0){
 			itemColdTime_9 = 3;
+			itemOn_9 = true;
+			item_9ClickID = ClickID;
+			nextCard = RandomCard();
+			nextCardImg = document.querySelector(`#myitem_${ClickID} img`);
+			let color;
+			switch (Math.floor(nextCard / 13)) {
+				case 0:
+					color = "Spade";
+					break;
+				case 1:
+					color = "Heart";
+					break;
+				case 2:
+					color = "Club";
+					break;
+				case 3:
+					color = "Diamond";
+					break;
+			}
+			nextCardImg.src = `img/Card/${color}${(card % 13) + 1}.png`;
 		}
 		break;
 		case 10:
 		borderColor = 'red';
 		if(itemColdTime_10 <= 0){
+			itemOn_10 = true;
 			itemColdTime_10 = 3;
+			item_10ClickID = ClickID;
+			document.querySelector(`#myitem_${ClickID} img`).src = bossCardFirst;
 		}
 		break;
 		case 11:
 		borderColor = 'red';
 		if(itemColdTime_11 <= 0){
 			itemColdTime_11 = 5;
+			itemOn_11 = true;
+			item_11ClickID = ClickID;
 		}
 		break;
 		case 12:
 		borderColor = 'red';
-		itemColdTime_12 = 5;
 		if(itemColdTime_12 <= 0){
 			itemColdTime_12 = 5;
+			itemOn_12 = true;
+			item_12ClickID = ClickID;
 		}
 		break;
 		case 13:
