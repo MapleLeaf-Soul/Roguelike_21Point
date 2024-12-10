@@ -93,6 +93,7 @@ function NextButton() {
 	GiveMyCard();
 	if(itemOn_13){
 		Item13Card();
+		itemOn_13 = false;
 	}
 	GameTurn();
 }

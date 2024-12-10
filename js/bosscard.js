@@ -1,7 +1,7 @@
 var bossCardNumber = 0;
 var bossCardFirst = 'img/Card/Background.png'
 var bossCardFirstPoint = 0;
-//给己方发牌，可以传参
+//给庄家发牌，可以传参
 function GiveBossCard(card) {
 	//随机
 	if (card === undefined) {
