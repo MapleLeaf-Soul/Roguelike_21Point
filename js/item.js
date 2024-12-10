@@ -1,16 +1,19 @@
 var allMyItem = [];
 var allMyItemNumber = 0;
+//技能随机
+var isCardFirstBlack = 13; //检测前置
 function ItemRandom(){
+	let thistime;
 	for(thistime = 1; thistime <= 15; thistime++){
 		document.getElementById(`item_${thistime}`).style.display = 'none';
 	}
-	allThisItem = [];
+	let allThisItem = [];
 	thistime = 0;
 	document.getElementById('shopitemmoney').textContent = `${allMyItemNumber*1000}`
 	while(true){
-		acheItem = Math.floor(Math.random() * 15 + 1);
+		let acheItem = Math.floor(Math.random() * isCardFirstBlack + 1);
 		if (!allMyItem.includes(acheItem) && !allThisItem.includes(acheItem)) {
-			item = acheItem;
+			let item = acheItem;
 			allThisItem.push(acheItem);
 			document.getElementById(`item_${item}`).style.display = 'flex';
 			thistime ++;
@@ -21,78 +24,123 @@ function ItemRandom(){
 		}
 	}
 }
+
+//技能选择
+var itemOn_1 = false;
+var itemOn_2 = false;
+var itemOn_3 = false;
+var itemOn_4 = false;
+var itemOn_5 = false;
+var itemOn_6 = false;
+var itemOn_7 = false;
 async function GiveMyItem(itemID){
 	if(itemID == 0){
 		
+	}else if(myPoint < allMyItemNumber*1000){
+		return;
 	}else{
 		allMyItem.push(itemID);
 		allMyItemNumber++;
-		
-		myItem = document.getElementById(`myitem_${allMyItemNumber}`);
-		img = document.createElement('img');
-		div = document.createElement('div');
+		var myItem = document.getElementById(`myitem_${allMyItemNumber}`);
+		var img = document.createElement('img');
+		var div = document.createElement('div');
 		switch(itemID){
 			case 1:
 			img.src = 'img/icon/Spade1.png';
 			div.textContent = '底牌隐去';
+			borderColor = 'white';
+			isCardFirstBlack = 15;
+			itemOn_1 = true;
 			break;
 			case 2:
 			img.src = 'img/icon/Spade1.png';
 			div.textContent = '平局';
+			borderColor = 'white';
+			itemOn_2 = true;
 			break;
 			case 3:
 			img.src = 'img/icon/Spade1.png';
 			div.textContent = 'ALL IN !!!';
+			borderColor = 'white';
+			itemOn_3 = true;
+			allinButton = true;
 			break;
 			case 4:
-			img.src = 'img/icon/Heart1.png';
-			div.textContent = '快手';
-			break;
-			case 5:
 			img.src = 'img/icon/Club1.png';
 			div.textContent = '点数控制';
+			borderColor = 'white';
+			itemOn_4 = true;
+			break;
+			case 5:
+			img.src = 'img/icon/Spade1.png';
+			div.textContent = '幸运A';
+			borderColor = 'white';
+			itemOn_5 = true;
 			break;
 			case 6:
-			img.src = 'img/icon/Club1.png';
-			div.textContent = '启动资金';
-			break;
-			case 7:
-			img.src = 'img/icon/Heart1.png';
-			div.textContent = '袖内抽卡';
-			break;
-			case 8:
-			img.src = 'img/icon/Heart1.png';
-			div.textContent = '釜底抽薪';
-			break;
-			case 9:
 			img.src = 'img/icon/Spade1.png';
 			div.textContent = '小型大卡';
+			borderColor = 'white';
+			itemOn_6 = true;
 			break;
-			case 10:
+			case 7:
 			img.src = 'img/icon/Spade1.png';
 			div.textContent = '24点？';
+			borderColor = 'white';
+			itemOn_7 = true;
+			gamePointMax = 24;
+			break;
+			case 8:
+			img.src = 'img/icon/Club1.png';
+			div.textContent = '启动资金';
+			borderColor = 'yellow';
+			itemOn_8 = true;
+			break;
+			case 9:
+			img.src = 'img/icon/Heart1.png';
+			div.textContent = '透视';
+			borderColor = 'yellow';
+			itemOn_9 = true;
+			break;
+			case 10:
+			img.src = 'img/icon/Heart1.png';
+			div.textContent = '偷看';
+			borderColor = 'yellow';
+			itemOn_10 = true;
 			break;
 			case 11:
 			img.src = 'img/icon/Spade1.png';
 			div.textContent = '强制表演';
+			borderColor = 'yellow';
+			itemOn_11 = true;
 			break;
 			case 12:
 			img.src = 'img/icon/Spade1.png';
-			div.textContent = '幸运A';
+			div.textContent = '封锁';
+			borderColor = 'yellow';
+			itemOn_12 = true;
 			break;
 			case 13:
 			img.src = 'img/icon/Heart1.png';
-			div.textContent = '透视';
+			div.textContent = '快手';
+			borderColor = 'yellow';
+			itemOn_13 = true;
 			break;
 			case 14:
-			img.src = 'img/icon/Spade1.png';
-			div.textContent = '封锁';
+			img.src = 'img/icon/Heart1.png';
+			div.textContent = '袖内抽卡';
+			borderColor = 'yellow';
+			itemOn_14 = true;
 			break;
 			case 15:
-			img.src = 'img/icon/shopitem.png';
-			div.textContent = '偷看';
+			img.src = 'img/icon/Heart1.png';
+			div.textContent = '釜底抽薪';
+			borderColor = 'yellow';
+			itemOn_15 = true;
 			break;
 		}
+		NowMyPoint(-(allMyItemNumber - 1) * 1000);
+		myItem.style.border = `${borderColor} 2px solid`;
 		myItem.appendChild(img);
 		myItem.appendChild(div);
 	}
@@ -105,6 +153,71 @@ async function GiveMyItem(itemID){
 	PointTurn();
 }
 
+//点击反应
+var itemColdTime_9 = 0;
+var itemColdTime_10 = 0;
+var itemColdTime_11 = 0;
+var itemColdTime_12 = 0;
+var itemOn_8 = false;
+var itemOn_13 = false;
+var itemOn_14 = false;
+var itemOn_15 = false;
+
 async function MyItemClick(ClickID){
-	
+	let myItem = document.getElementById(`myitem_${ClickID}`);
+	let itemID = allMyItem[ClickID-1];
+	let borderColor;
+	switch(itemID){
+		case 8:
+		borderColor = 'red';
+		if(itemOn_8){
+			itemOn_8 = false;
+			NowMyPoint(3000);
+		}
+		break;
+		case 9:
+		borderColor = 'red';
+		if(itemColdTime_9 <= 0){
+			itemColdTime_9 = 3;
+		}
+		break;
+		case 10:
+		borderColor = 'red';
+		if(itemColdTime_10 <= 0){
+			itemColdTime_10 = 3;
+		}
+		break;
+		case 11:
+		borderColor = 'red';
+		if(itemColdTime_11 <= 0){
+			itemColdTime_11 = 5;
+		}
+		break;
+		case 12:
+		borderColor = 'red';
+		itemColdTime_12 = 5;
+		if(itemColdTime_12 <= 0){
+			itemColdTime_12 = 5;
+		}
+		break;
+		case 13:
+		borderColor = 'red';
+		if(itemOn_13){
+			itemOn_13 = false;
+		}
+		break;
+		case 14:
+		borderColor = 'red';
+		if(itemOn_14){
+			itemOn_14 = false;
+		}
+		break;
+		case 15:
+		borderColor = 'red';
+		if(itemOn_15){
+			itemOn_15 = false;
+		}
+		break;
+	}
+	myItem.style.border = `${borderColor} 2px solid`;
 }

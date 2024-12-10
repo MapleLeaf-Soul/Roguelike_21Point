@@ -1,4 +1,5 @@
 var myCardNumber = 0;
+var haveAce = false;
 
 //给己方发牌，可以传参
 function GiveMyCard(card) {
@@ -18,7 +19,9 @@ function GiveMyCard(card) {
 	}
 	//标记已抽卡
 	cardInDeath.push(card);
-
+	if((card % 13 + 1) == 1){
+		haveAce = true;
+	}
 
 	//显示手卡
 	mycard = document.getElementById('mycard');
@@ -41,7 +44,12 @@ function GiveMyCard(card) {
 	img.src = `img/Card/${color}${(card % 13) + 1}.png`;
 	img.id = `mycardimg${myCardNumber}`;
 	img.style.left = '0';
-	img.setAttribute('data-cardPiont', (((card % 13) + 1) > 10 ? 10 : ((card % 13) + 1)));
+	if(itemOn_6){
+		img.setAttribute('data-cardPiont', (((card % 13) + 1) > 10 ? 10 : ((card % 13) + 1)));
+	}else{
+		img.setAttribute('data-cardPiont', (((card % 13) + 1) > 9 ? 9 : ((card % 13) + 1)));
+	}
+	
 	img.setAttribute('data-cardNumber', myCardNumber);
 	img.onclick = () => {
 		window[`myCardImgClick${myCardNumber}`](); // 调用对应的函数
@@ -178,7 +186,9 @@ function myCardScore() {
 		myallCardScore = (card0Score + card1Score + card2Score + card3Score + card4Score);
 	}
 
-
+	if(itemOn_4){
+		myallCardScore += parseInt(myPoint.toString()[0]);
+	}
 
 	scoreDIV.textContent = myallCardScore;
 }

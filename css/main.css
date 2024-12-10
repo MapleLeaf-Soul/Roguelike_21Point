@@ -198,7 +198,7 @@ body {
 	width: 10vw;
 	height: 25vh;
 	display: block;
-
+	border: #FFF 2px solid;
 }
 
 .shopDIV div {
@@ -234,6 +234,7 @@ body {
 	width: 10vw;
 	align-items: center;
 	justify-content: center;
+	border: none;
 }
 .myitem table tr td img{
 	max-height: 50%;

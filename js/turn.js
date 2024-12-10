@@ -1,4 +1,6 @@
 //初始化开始游戏
+var gamePointMax = 21
+
 async function GameStart() {
 	deathcard = document.getElementById('deathcard');
 	storyDIV = document.getElementById('storyDIV');
@@ -40,11 +42,11 @@ function GameTurn() {
 		myBlackJack = true;
 		NowLevelPoint(2 * levelPoint)
 	}
-	else if(myallCardScore > 21){
+	else if(myallCardScore > gamePointMax){
 		myBoom = true;
 		NowLevelPoint(-levelPoint);
 	}
-	if (myallCardScore >= 21 || myCardNumber == 5) {
+	if (myallCardScore >= gamePointMax || myCardNumber == 5) {
 		StopTurn();
 	} else {
 		//按钮
@@ -173,9 +175,11 @@ function PointTurn(){
 	
 }
 
+
+
 //初步结算
 async function StopTurn() {
-	if (myallCardScore > 21) {
+	if (myallCardScore > gamePointMax) {
 		NumberTurn()
 	} else {
 		await delay(1000);
@@ -203,23 +207,29 @@ async function NumberTurn() {
 	myFiveNumber = false;
 	myBlackJack = false;
 	myBoom = false;
-	if(bossCardNumber == 5 && bossallCardScore <= 21){
+	if(bossCardNumber == 5 && bossallCardScore <= gamePointMax){
 		bossFiveNumber = true;
 	}
 	else if(bossallCardScore == 21 && bossCardNumber == 2){
 		bossBlackJack = true;
 	}
-	else if(bossallCardScore > 21){
+	else if(bossallCardScore > gamePointMax){
 		bossBoom = true;
 	}
 	
-	if(myCardNumber == 5 && myallCardScore <= 21){
+	if(myCardNumber == 5 && myallCardScore <= gamePointMax){
 		myFiveNumber = true;
 	}
 	else if(myallCardScore == 21 && myCardNumber == 2){
 		myBlackJack = true;
 	}
-	else if(myallCardScore > 21){
+	else if(itemOn_6 && myallCardScore == 20 && myCardNumber == 2){
+		myBlackJack = true;
+	}
+	else if(itemOn_5 && myallCardScore == 21 && haveAce){
+		myBlackJack = true;
+	}
+	else if(myallCardScore > gamePointMax){
 		myBoom = true;
 	}
 	
@@ -229,8 +239,11 @@ async function NumberTurn() {
 	}else if(bossBoom || (myFiveNumber && !bossFiveNumber && !bossBlackJack) || (myBlackJack && !bossBlackJack) || (!myBoom && myallCardScore > bossallCardScore)){
 		document.getElementById('nonetext').textContent = "赢！"
 		NowLevelPoint(levelPoint);
-	}else{
+	}else if(itemOn_2){
 		document.getElementById('nonetext').textContent = "平！"
+	}else{
+		document.getElementById('nonetext').textContent = "输！"
+		NowLevelPoint(-levelPoint);
 	}
 	
 	await delay(1000);
@@ -243,12 +256,25 @@ async function NumberTurn() {
 function TextNextTurn() {
 	CleanMyCard();
 	CleanbossCard();
+	haveAce = false;
 	myCardNumber = 0;
 	bossCardNumber = 0;
 	myCardScore();
 	bossCardScore();
 	NowMyPoint(levelPoint);
 	NowLevelPoint(-levelPoint);
+	if(myPoint <= 0 && itemOn_3){
+		itemOn_3 = false;
+		myPoint = 100;
+		NowMyPoint();
+	}
+	if(myPoint > 2000){
+		add1000Button = true;
+		sub1000Button = true;
+	}else{
+		add1000Button = false;
+		sub1000Button = false;
+	}
 	if(DeathCardNumber - cardInDeath.length > 4){
 		PointTurn();
 	}else{

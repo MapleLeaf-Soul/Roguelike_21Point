@@ -47,7 +47,7 @@
 					</div>
 					<div class="storyDIV" id="storyDIV">
 						<div class="gamebutton_start" id="gamebutton_start" style="display: none;">
-							<button type="button" onclick="GameStart()" >
+							<button type="button" onclick="GameStart()">
 								开始游戏
 							</button>
 						</div>
@@ -70,43 +70,40 @@
 								<div>ALL IN !!!</div>
 								<div>能够使用All In，首次归零时恢复100点数</div>
 							</div>
-
 							<div class="shopitem" id="item_4" onclick="GiveMyItem(4)">
-								<img src="img/icon/Heart1.png" />
-								<div>快手</div>
-								<div>主动：选择一张手牌，在叫牌时抽取两张，并将选中的牌置于顶端</div>
-							</div>
-							<div class="shopitem" id="item_5" onclick="GiveMyItem(5)">
 								<img src="img/icon/Club1.png" />
 								<div>点数控制</div>
 								<div>你的总点数额外与剩余筹码的首位数字相加</div>
 							</div>
+							<div class="shopitem" id="item_5" onclick="GiveMyItem(5)">
+								<img src="img/icon/Spade1.png" />
+								<div>幸运A</div>
+								<div>持有Ace时，手牌总点数为21即可判定为BlackJack</div>
+							</div>
 							<div class="shopitem" id="item_6" onclick="GiveMyItem(6)">
-								<img src="img/icon/Club1.png" />
-								<div>启动资金</div>
-								<div>一次性：你获得3000点数</div>
-							</div>
-
-							<div class="shopitem" id="item_7" onclick="GiveMyItem(7)">
-								<img src="img/icon/Heart1.png" />
-								<div>袖内抽卡</div>
-								<div>主动：能够保存卡牌，能够随时与底牌互换</div>
-							</div>
-							<div class="shopitem" id="item_8" onclick="GiveMyItem(8)">
-								<img src="img/icon/Heart1.png" />
-								<div>釜底抽薪</div>
-								<div>主动：将你的底牌与庄家交换</div>
-							</div>
-							<div class="shopitem" id="item_9" onclick="GiveMyItem(9)">
 								<img src="img/icon/Spade1.png" />
 								<div>小型大卡</div>
 								<div>10点卡将算为9点，不会影响BlackJack</div>
 							</div>
-
-							<div class="shopitem" id="item_10" onclick="GiveMyItem(10)">
+							<div class="shopitem" id="item_7" onclick="GiveMyItem(7)">
 								<img src="img/icon/Spade1.png" />
 								<div>24点？</div>
-								<div>使游戏的点数上限改为24</div>
+								<div>使游戏的点数上限改为24，不会影响BlackJack</div>
+							</div>
+							<div class="shopitem" id="item_8" onclick="GiveMyItem(8)">
+								<img src="img/icon/Club1.png" />
+								<div>启动资金</div>
+								<div>一次性：你获得3000点数（免费）</div>
+							</div>
+							<div class="shopitem" id="item_9" onclick="GiveMyItem(9)">
+								<img src="img/icon/Heart1.png" />
+								<div>透视</div>
+								<div>主动：观察牌库顶的点数（3轮冷却）</div>
+							</div>
+							<div class="shopitem" id="item_10" onclick="GiveMyItem(10)">
+								<img src="img/icon/Heart1.png" />
+								<div>偷看</div>
+								<div>主动：你可以得知庄家的底牌（3轮冷却）</div>
 							</div>
 							<div class="shopitem" id="item_11" onclick="GiveMyItem(11)">
 								<img src="img/icon/Spade1.png" />
@@ -115,23 +112,23 @@
 							</div>
 							<div class="shopitem" id="item_12" onclick="GiveMyItem(12)">
 								<img src="img/icon/Spade1.png" />
-								<div>幸运A</div>
-								<div>持有Ace时，手牌总点数为21即可判定为BlackJack</div>
-							</div>
-							<div class="shopitem" id="item_13" onclick="GiveMyItem(13)">
-								<img src="img/icon/Heart1.png" />
-								<div>透视</div>
-								<div>主动：观察牌库顶的点数（3轮冷却）</div>
-							</div>
-							<div class="shopitem" id="item_14" onclick="GiveMyItem(14)">
-								<img src="img/icon/Spade1.png" />
 								<div>封锁</div>
 								<div>主动：本轮庄家禁止叫牌（5轮冷却）</div>
 							</div>
+							<div class="shopitem" id="item_13" onclick="GiveMyItem(13)">
+								<img src="img/icon/Heart1.png" />
+								<div>快手</div>
+								<div>主动：选择一张手牌，在叫牌时抽取两张，并将选中的牌置于顶端</div>
+							</div>
+							<div class="shopitem" id="item_14" onclick="GiveMyItem(14)">
+								<img src="img/icon/Heart1.png" />
+								<div>袖内抽卡</div>
+								<div>主动：能够保存卡牌，能够随时与底牌互换</div>
+							</div>
 							<div class="shopitem" id="item_15" onclick="GiveMyItem(15)">
 								<img src="img/icon/Heart1.png" />
-								<div>偷看</div>
-								<div>主动：你可以得知庄家的底牌（3轮冷却）</div>
+								<div>釜底抽薪</div>
+								<div>主动：将你的底牌与庄家交换</div>
 							</div>
 						</div>
 						<div class="shopskip" id="shopskip" onclick="GiveMyItem(0)">
@@ -152,24 +149,24 @@
 					<table>
 						<tr>
 							<td id="myitem_1" onclick="MyItemClick(1)">
-								
+
 							</td>
 							<td id="myitem_2" onclick="MyItemClick(2)">
-								
+
 							</td>
 							<td id="myitem_3" onclick="MyItemClick(3)">
-								
+
 							</td>
 						</tr>
 						<tr>
 							<td id="myitem_4" onclick="MyItemClick(4)">
-								
+
 							</td>
 							<td id="myitem_5" onclick="MyItemClick(5)">
-								
+
 							</td>
 							<td id="myitem_6" onclick="MyItemClick(6)">
-								
+
 							</td>
 						</tr>
 					</table>

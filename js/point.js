@@ -14,11 +14,16 @@ function LevelPointAdd(thispoint){
 	if(levelPoint + thispoint >= 0 && levelPoint + thispoint <= myPoint){
 		levelPoint += thispoint;
 	}
+	if(myPoint < 100){
+		levelPoint = myPoint;
+	}
 	NowLevelPoint();
 }
+
 function LevelPointAllIn(){
 	levelPoint = myPoint;
 	NowLevelPoint();
+	LevelPointStart();
 }
 
 //点数显示
@@ -90,7 +95,7 @@ async function NowLevelPoint(thispoint){
 //下注开始
 function LevelPointStart(){
 	console.log(levelPoint);
-	if(levelPoint>=100){
+	if(levelPoint>=100 || levelPoint == myPoint){
 		document.getElementById('add100').style.visibility = 'hidden';
 		document.getElementById('add1000').style.visibility = 'hidden';
 		document.getElementById('sub100').style.visibility = 'hidden';
@@ -100,6 +105,11 @@ function LevelPointStart(){
 		NowMyPoint(-levelPoint);
 		GameTurnStart();
 	}else{
-		LevelPointAdd(100);
+		if(myPoint < 100){
+			LevelPointAdd(myPoint);
+		}else{
+			LevelPointAdd(100);
+		}
+		
 	}
 }
