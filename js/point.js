@@ -82,7 +82,7 @@ async function NowLevelPoint(thispoint) {
 
 //下注开始
 function LevelPointStart() {
-	console.log(levelPoint);
+	//console.log(levelPoint);
 	if (levelPoint >= 100 || levelPoint == myPoint) {
 		document.getElementById('add100').style.visibility = 'hidden';
 		document.getElementById('add1000').style.visibility = 'hidden';

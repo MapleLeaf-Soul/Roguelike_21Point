@@ -202,7 +202,10 @@ function CleanMyCard() {
 	document.getElementById('mycard').innerHTML = '';
 }
 
+var item_13Card;
+var myCardImgClickcardID;
 function myCardImgClick(cardID) {
+	myCardImgClickcardID = cardID;
 	item_13Card = document.getElementById(`mycardimg${cardID}`);
 	if(itemOn_13){
 		switch(myCardNumber){

@@ -35,7 +35,7 @@ async function GameTurnStart() {
 
 //发牌回合
 function GameTurn() {
-	if (myCardNumber == 5 && myallCardScore <= gamePointMax) {
+	if (myCardNumber >= 5 && myallCardScore <= gamePointMax) {
 		myFiveNumber = true;
 		NowLevelPoint(levelPoint);
 	} else if (myallCardScore == 21 && myCardNumber == 2) {
@@ -254,7 +254,7 @@ async function NumberTurn() {
 		bossBoom = true;
 	}
 
-	if (myCardNumber == 5 && myallCardScore <= gamePointMax) {
+	if (myCardNumber >= 5 && myallCardScore <= gamePointMax) {
 		myFiveNumber = true;
 	} else if (myallCardScore == 21 && myCardNumber == 2) {
 		myBlackJack = true;
@@ -266,12 +266,16 @@ async function NumberTurn() {
 		myBoom = true;
 	}
 
-	if (myBoom || (bossFiveNumber && !myFiveNumber && !myBlackJack) || (bossBlackJack && !myBlackJack) || (!
-			bossBoom && bossallCardScore > myallCardScore)) {
+	if (myBoom || (bossFiveNumber && !myFiveNumber && !myBlackJack) || (bossBlackJack && !myBlackJack)) {
 		document.getElementById('nonetext').textContent = "输！"
 		NowLevelPoint(-levelPoint);
-	} else if (bossBoom || (myFiveNumber && !bossFiveNumber && !bossBlackJack) || (myBlackJack && !bossBlackJack) ||
-		(!myBoom && myallCardScore > bossallCardScore)) {
+	} else if (bossBoom || (myFiveNumber && !bossFiveNumber && !bossBlackJack) || (myBlackJack && !bossBlackJack)){
+		document.getElementById('nonetext').textContent = "赢！"
+		NowLevelPoint(levelPoint);
+	}else if(bossallCardScore > myallCardScore){
+		document.getElementById('nonetext').textContent = "输！"
+		NowLevelPoint(-levelPoint);
+	}else if(bossallCardScore < myallCardScore){
 		document.getElementById('nonetext').textContent = "赢！"
 		NowLevelPoint(levelPoint);
 	} else if (itemOn_2) {
