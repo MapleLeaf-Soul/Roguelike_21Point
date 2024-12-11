@@ -12,6 +12,7 @@ async function GameStart() {
 	document.getElementById('gamebutton_start').style.display = 'none';
 	ItemRandom();
 	BossRandom();
+	BossImg();
 }
 var turnNumber = 0;
 
@@ -280,7 +281,11 @@ async function NumberTurn() {
 		NowLevelPoint(-levelPoint);
 	}
 
-	await delay(1000);
+	// await delay(1000);
+	
+}
+
+function NextText(){
 	TextNextTurn();
 }
 
@@ -369,6 +374,7 @@ async function GameNext() {
 		await MakeDeathCard();
 		PointTurn();
 	}
+	BossImg();
 }
 
 function EndGame() {

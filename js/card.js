@@ -68,6 +68,7 @@ function Item13Card(){
 	item_13Card.setAttribute('data-cardInfo', card);
 	cardInDeath.push(card);
 	console.log("hands" + card);
+	myCardScore();
 }
 
 

@@ -55,7 +55,7 @@ body {
 	/* clip-path:inset(0px 60px 150px 0px) */
 }
 
-.boss>div>img {
+.bossimg {
 	position: absolute;
 	width: 10vw;
 }
