@@ -34,16 +34,26 @@ async function GameTurnStart() {
 
 //发牌回合
 function GameTurn() {
-	if (myCardNumber == 5) {
+	if (myCardNumber == 5 && myallCardScore <= gamePointMax) {
 		myFiveNumber = true;
-		NowLevelPoint(levelPoint)
+		NowLevelPoint(levelPoint);
 	} else if (myallCardScore == 21 && myCardNumber == 2) {
 		myBlackJack = true;
-		NowLevelPoint(2 * levelPoint)
+		NowLevelPoint(2 * levelPoint);
+	} else if (itemOn_6 && myallCardScore == 20 && myCardNumber == 2) {
+		myBlackJack = true;
+		NowLevelPoint(2 * levelPoint);
+	} else if (itemOn_5 && myallCardScore == 21 && haveAce) {
+		myBlackJack = true;
+		NowLevelPoint(2 * levelPoint);
 	} else if (myallCardScore > gamePointMax) {
 		myBoom = true;
 		NowLevelPoint(-levelPoint);
 	}
+
+
+
+
 	if (myallCardScore >= gamePointMax || myCardNumber == 5) {
 		StopTurn();
 	} else {
@@ -77,7 +87,7 @@ function DoubleButton() {
 	NowMyPoint(-levelPoint);
 	NowLevelPoint(levelPoint);
 	GiveMyCard();
-	if(itemOn_13){
+	if (itemOn_13) {
 		Item13Card();
 		itemOn_13 = false;
 	}
@@ -91,7 +101,7 @@ function NextButton() {
 	document.getElementById('mybutton_stop').style.visibility = 'hidden';
 	document.getElementById('mybutton_run').style.visibility = 'hidden';
 	GiveMyCard();
-	if(itemOn_13){
+	if (itemOn_13) {
 		Item13Card();
 		itemOn_13 = false;
 	}
@@ -346,9 +356,9 @@ async function GameNext() {
 	document.getElementById('shopDIV').style.display = 'flex';
 	document.getElementById('shopskip').style.display = 'flex';
 	document.getElementById('gamebutton_start').style.display = 'none';
-	if(allMyItemNumber < 6){
+	if (allMyItemNumber < 6) {
 		ItemRandom();
-	}else{
+	} else {
 		cardInDeath = [];
 		document.getElementById('deathcard').style.display = 'block';
 		document.getElementById('storyDIV').style.display = 'none';
