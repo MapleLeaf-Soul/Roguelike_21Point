@@ -349,6 +349,7 @@ function TextNextTurn() {
 }
 
 async function GameNext() {
+	bossTurnNumber ++;
 	cardInDeath = [];
 	document.getElementById('deathcard').replaceChildren();
 	document.getElementById('deathcard').style.display = 'none';
@@ -373,6 +374,7 @@ async function GameNext() {
 function EndGame() {
 	alert("游戏结束");
 	cardInDeath = [];
+	bossTurnNumber = 0;
 	document.getElementById('deathcard').replaceChildren();
 	document.getElementById('myitem_1').replaceChildren();
 	document.getElementById('myitem_1').style.border = 'none';
