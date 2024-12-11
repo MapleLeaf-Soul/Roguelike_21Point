@@ -323,6 +323,7 @@ function TextNextTurn() {
 	}
 	itemOn_13 = false;
 	document.getElementById(`myitem_${item_13ClickID}`).style.border = 'yellow 2px solid';
+	item_13CardHave = false;
 	itemOn_15 = false;
 	document.getElementById(`myitem_${item_15ClickID}`).style.border = 'yellow 2px solid';
 	CleanMyCard();

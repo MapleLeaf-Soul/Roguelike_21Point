@@ -202,11 +202,14 @@ function CleanMyCard() {
 	document.getElementById('mycard').innerHTML = '';
 }
 
+//选择卡牌
 var item_13Card;
+var item_13CardHave = false;
 var myCardImgClickcardID;
 function myCardImgClick(cardID) {
 	myCardImgClickcardID = cardID;
 	item_13Card = document.getElementById(`mycardimg${cardID}`);
+	item_13CardHave = true;
 	if(itemOn_13){
 		switch(myCardNumber){
 			case 5:

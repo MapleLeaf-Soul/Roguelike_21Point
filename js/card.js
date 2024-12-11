@@ -41,15 +41,12 @@ function RandomCard(){
 }
 
 function Item13Card(){
-	if(parseInt(item_13Card.getAttribute('data-cardInfo')) >= 0 && parseInt(item_13Card.getAttribute('data-cardInfo')) <= 52){
-		item_13NextCard = parseInt(item_13Card.getAttribute('data-cardInfo'));
-	}else if(parseInt(item_13NextCard.document.getElementById(`mycardimg${cardID}`).getAttribute('data-cardInfo')) >= 0 && parseInt(item_13NextCard.document.getElementById(`mycardimg${cardID}`).getAttribute('data-cardInfo')) <= 52){
-		item_13NextCard = parseInt(item_13NextCard.document.getElementById(`mycardimg${cardID}`).getAttribute('data-cardInfo'));
-	}else{
-		item_13NextCard = RandomCard();
-		console.log("item_13NextCard出错，随机发卡")
-	}
-	
+		if(item_13CardHave){
+			item_13NextCard = parseInt(item_13Card.getAttribute('data-cardInfo'));
+		}else{
+			return;
+		}
+		
 	card = RandomCard();
 	let color;
 	switch (Math.floor(card / 13)) {
