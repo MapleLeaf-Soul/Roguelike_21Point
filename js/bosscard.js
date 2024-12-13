@@ -8,7 +8,7 @@ function GiveBossCard(card) {
 		if (nextCard != -1) {
 			card = nextCard;
 			itemOn_9 = false;
-			NextCard = -1;
+			nextCard = -1;
 			document.querySelector(`#myitem_${item_9ClickID} img`).src = 'img/icon/Heart1.png';
 		} else if (item_13NextCard != -1) {
 			card = item_13NextCard;
