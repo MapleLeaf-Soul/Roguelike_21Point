@@ -211,27 +211,27 @@
 						</div>
 						<table class="mypointbutton" id="mypointbutton">
 							<tr>
-								<td onclick="LevelPointAdd(100)">
-									<div class="add100" id="add100">+100</div>
+								<td>
+									<div class="add100" id="add100" onclick="LevelPointAdd(100)">+100</div>
 								</td>
-								<td onclick="LevelPointAdd(1000)">
-									<div class="add1000" id="add1000">+1000</div>
-								</td>
-							</tr>
-							<tr>
-								<td onclick="LevelPointAdd(-100)">
-									<div class="sub100" id="sub100">-100</div>
-								</td>
-								<td onclick="LevelPointAdd(-1000)">
-									<div class="sub1000" id="sub1000">-1000</div>
+								<td>
+									<div class="add1000" id="add1000" onclick="LevelPointAdd(1000)">+1000</div>
 								</td>
 							</tr>
 							<tr>
-								<td onclick="LevelPointStart()">
-									<div class="mypointstart" id="mypointstart">下注!</div>
+								<td>
+									<div class="sub100" id="sub100" onclick="LevelPointAdd(-100)">-100</div>
 								</td>
-								<td onclick="LevelPointAllIn()">
-									<div class="allin" id="allin">All In!</div>
+								<td>
+									<div class="sub1000" id="sub1000" onclick="LevelPointAdd(-1000)">-1000</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="mypointstart" id="mypointstart" onclick="LevelPointStart()">下注!</div>
+								</td>
+								<td>
+									<div class="allin" id="allin" onclick="LevelPointAllIn()">All In!</div>
 								</td>
 							</tr>
 						</table>
