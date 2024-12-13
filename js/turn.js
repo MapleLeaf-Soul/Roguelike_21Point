@@ -12,7 +12,7 @@ async function GameStart() {
 	document.getElementById('gamebutton_start').style.display = 'none';
 	ItemRandom();
 	BossRandom();
-	BossImg();
+	document.getElementById('bossimg').src = 'img/Boss/BossNoob.png';
 }
 var turnNumber = 0;
 
@@ -152,11 +152,7 @@ async function BossTurn() {
 		itemOn_12 = false;
 		NumberTurn();
 	} else {
-		switch (bossType[bossTurnNumber]) {
-			case 0:
-				NoobBoss();
-				break;
-		}
+		BossSwitch(bossType[bossTurnNumber <= 12 ? bossTurnNumber : ((bossTurnNumber % 12) + 1)]);
 	}
 
 }
@@ -170,7 +166,7 @@ async function RunTurn() {
 		bossCardScore();
 		document.getElementById('nonetext').textContent = "理赔成功！";
 		await delay(3000);
-		TextNextTurn();
+		GameNextTurn();
 		playerTurn = false;
 	} else {
 		NowLevelPoint(-levelPoint / 2);
@@ -269,13 +265,13 @@ async function NumberTurn() {
 	if (myBoom || (bossFiveNumber && !myFiveNumber && !myBlackJack) || (bossBlackJack && !myBlackJack)) {
 		document.getElementById('nonetext').textContent = "输！"
 		NowLevelPoint(-levelPoint);
-	} else if (bossBoom || (myFiveNumber && !bossFiveNumber && !bossBlackJack) || (myBlackJack && !bossBlackJack)){
+	} else if (bossBoom || (myFiveNumber && !bossFiveNumber && !bossBlackJack) || (myBlackJack && !bossBlackJack)) {
 		document.getElementById('nonetext').textContent = "赢！"
 		NowLevelPoint(levelPoint);
-	}else if(bossallCardScore > myallCardScore){
+	} else if (bossallCardScore > myallCardScore) {
 		document.getElementById('nonetext').textContent = "输！"
 		NowLevelPoint(-levelPoint);
-	}else if(bossallCardScore < myallCardScore){
+	} else if (bossallCardScore < myallCardScore) {
 		document.getElementById('nonetext').textContent = "赢！"
 		NowLevelPoint(levelPoint);
 	} else if (itemOn_2) {
@@ -285,16 +281,17 @@ async function NumberTurn() {
 		NowLevelPoint(-levelPoint);
 	}
 
-	// await delay(1000);
+	await delay(1000);
 	
+	//NextText()
 }
 
-function NextText(){
-	TextNextTurn();
+function NextText() {
+	GameNextTurn();
 }
 
 //下一回合
-function TextNextTurn() {
+function GameNextTurn() {
 	document.getElementById('nonetext').textContent = "";
 	console.log("透视CD" + itemColdTime_9);
 	console.log("偷看CD" + itemColdTime_10);
@@ -350,7 +347,7 @@ function TextNextTurn() {
 		add1000Button = false;
 		sub1000Button = false;
 	}
-	if (DeathCardNumber - cardInDeath.length > 4) {
+	if (DeathCardNumberNum > 4) {
 		PointTurn();
 	} else {
 		GameNext();
@@ -359,7 +356,7 @@ function TextNextTurn() {
 }
 
 async function GameNext() {
-	bossTurnNumber ++;
+	bossTurnNumber++;
 	cardInDeath = [];
 	document.getElementById('deathcard').replaceChildren();
 	document.getElementById('deathcard').style.display = 'none';
@@ -379,13 +376,15 @@ async function GameNext() {
 		await MakeDeathCard();
 		PointTurn();
 	}
-	BossImg();
+	BossImg(bossType[bossTurnNumber <= 12 ? bossTurnNumber : ((bossTurnNumber % 12) + 1)]);
 }
 
 function EndGame() {
 	alert("游戏结束");
 	cardInDeath = [];
 	bossTurnNumber = 0;
+	bossType = [];
+	bossType.push(0);
 	document.getElementById('deathcard').replaceChildren();
 	document.getElementById('myitem_1').replaceChildren();
 	document.getElementById('myitem_1').style.border = 'none';

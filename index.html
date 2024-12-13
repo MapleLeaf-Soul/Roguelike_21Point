@@ -11,7 +11,7 @@
 				<div class="boss" id="boss">
 					<div style="visibility: hidden;"></div>
 					<div>
-						<img class="bossimg" id="bossimg" src="img/Boss/Club11.png" />
+						<img class="bossimg" id="bossimg" src=" " />
 					</div>
 				</div>
 				<div class="mastercarddiv" id="mastercarddiv">
@@ -26,8 +26,8 @@
 						<div></div>
 					</div>
 				</div>
-				<div class="levelpoint" id="levelpoint">
-					版本：1.1.10
+				<div class="levelpoint" id="levelpoint" style="float: right;right: 0px;">
+					<div style="position: absolute;right: 0px;">版本：1.1.15</div>
 				</div>
 
 			</div>
@@ -141,7 +141,7 @@
 					</div>
 				</div>
 				<div class="none2" id="none2">
-					<div id="nonetext" style="font-size: 100px;" onclick="NextText()"></div>
+					<div class="nonetext" id="nonetext" onclick="NextText()"></div>
 				</div>
 			</div>
 			<div>
@@ -211,27 +211,27 @@
 						</div>
 						<table class="mypointbutton" id="mypointbutton">
 							<tr>
-								<td>
-									<div class="add100" id="add100" onclick="LevelPointAdd(100)">+100</div>
+								<td onclick="LevelPointAdd(100)">
+									<div class="add100" id="add100">+100</div>
 								</td>
-								<td>
-									<div class="add1000" id="add1000" onclick="LevelPointAdd(1000)">+1000</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="sub100" id="sub100" onclick="LevelPointAdd(-100)">-100</div>
-								</td>
-								<td>
-									<div class="sub1000" id="sub1000" onclick="LevelPointAdd(-1000)">-1000</div>
+								<td onclick="LevelPointAdd(1000)">
+									<div class="add1000" id="add1000">+1000</div>
 								</td>
 							</tr>
 							<tr>
-								<td>
-									<div class="mypointstart" id="mypointstart" onclick="LevelPointStart()">下注!</div>
+								<td onclick="LevelPointAdd(-100)">
+									<div class="sub100" id="sub100">-100</div>
 								</td>
-								<td>
-									<div class="allin" id="allin" onclick="LevelPointAllIn()">All In!</div>
+								<td onclick="LevelPointAdd(-1000)">
+									<div class="sub1000" id="sub1000">-1000</div>
+								</td>
+							</tr>
+							<tr>
+								<td onclick="LevelPointStart()">
+									<div class="mypointstart" id="mypointstart">下注!</div>
+								</td>
+								<td onclick="LevelPointAllIn()">
+									<div class="allin" id="allin">All In!</div>
 								</td>
 							</tr>
 						</table>
@@ -242,82 +242,82 @@
 		</div>
 		<!-- 预加载所有图片 -->
 		<div style="display: none;">
-			<div id="myitem_0" style="border: none;"
-			<img src="img/Card/Background.png">
-			<img src="img/Card/JOKER-A.png">
-			<img src="img/Card/JOKER-B.png">
-			<img src="img/Card/Club1.png">
-			<img src="img/Card/Club2.png">
-			<img src="img/Card/Club3.png">
-			<img src="img/Card/Club4.png">
-			<img src="img/Card/Club5.png">
-			<img src="img/Card/Club6.png">
-			<img src="img/Card/Club7.png">
-			<img src="img/Card/Club8.png">
-			<img src="img/Card/Club9.png">
-			<img src="img/Card/Club10.png">
-			<img src="img/Card/Club11.png">
-			<img src="img/Card/Club12.png">
-			<img src="img/Card/Club13.png">
-			<img src="img/Card/Diamond1.png">
-			<img src="img/Card/Diamond2.png">
-			<img src="img/Card/Diamond3.png">
-			<img src="img/Card/Diamond4.png">
-			<img src="img/Card/Diamond5.png">
-			<img src="img/Card/Diamond6.png">
-			<img src="img/Card/Diamond7.png">
-			<img src="img/Card/Diamond8.png">
-			<img src="img/Card/Diamond9.png">
-			<img src="img/Card/Diamond10.png">
-			<img src="img/Card/Diamond11.png">
-			<img src="img/Card/Diamond12.png">
-			<img src="img/Card/Diamond13.png">
-			<img src="img/Card/Heart1.png">
-			<img src="img/Card/Heart2.png">
-			<img src="img/Card/Heart3.png">
-			<img src="img/Card/Heart4.png">
-			<img src="img/Card/Heart5.png">
-			<img src="img/Card/Heart6.png">
-			<img src="img/Card/Heart7.png">
-			<img src="img/Card/Heart8.png">
-			<img src="img/Card/Heart9.png">
-			<img src="img/Card/Heart10.png">
-			<img src="img/Card/Heart11.png">
-			<img src="img/Card/Heart12.png">
-			<img src="img/Card/Heart13.png">
-			<img src="img/Card/Spade1.png">
-			<img src="img/Card/Spade2.png">
-			<img src="img/Card/Spade3.png">
-			<img src="img/Card/Spade4.png">
-			<img src="img/Card/Spade5.png">
-			<img src="img/Card/Spade6.png">
-			<img src="img/Card/Spade7.png">
-			<img src="img/Card/Spade8.png">
-			<img src="img/Card/Spade9.png">
-			<img src="img/Card/Spade10.png">
-			<img src="img/Card/Spade11.png">
-			<img src="img/Card/Spade12.png">
-			<img src="img/Card/Spade13.png">
-			<img src="img/Boss/Club11.png">
-			<img src="img/Boss/Club12.png">
-			<img src="img/Boss/Club13.png">
-			<img src="img/Boss/Heart11.png">
-			<img src="img/Boss/Heart11.png">
-			<img src="img/Boss/Heart11.png">
-			<img src="img/Boss/Spade11.png">
-			<img src="img/Boss/Spade12.png">
-			<img src="img/Boss/Spade13.png">
-			<img src="img/Boss/Diamond11.png">
-			<img src="img/Boss/Diamond12.png">
-			<img src="img/Boss/Diamond13.png">
-		</div>
-		<script src="js/load.js"></script>
-		<script src="js/card.js"></script>
-		<script src="js/turn.js"></script>
-		<script src="js/mycard.js"></script>
-		<script src="js/bosscard.js"></script>
-		<script src="js/boss.js"></script>
-		<script src="js/point.js"></script>
-		<script src="js/item.js"></script>
+			<div id="myitem_0" style="border: none;" <img src="img/Card/Background.png">
+				<img src="img/Card/JOKER-A.png">
+				<img src="img/Card/JOKER-B.png">
+				<img src="img/Card/Club1.png">
+				<img src="img/Card/Club2.png">
+				<img src="img/Card/Club3.png">
+				<img src="img/Card/Club4.png">
+				<img src="img/Card/Club5.png">
+				<img src="img/Card/Club6.png">
+				<img src="img/Card/Club7.png">
+				<img src="img/Card/Club8.png">
+				<img src="img/Card/Club9.png">
+				<img src="img/Card/Club10.png">
+				<img src="img/Card/Club11.png">
+				<img src="img/Card/Club12.png">
+				<img src="img/Card/Club13.png">
+				<img src="img/Card/Diamond1.png">
+				<img src="img/Card/Diamond2.png">
+				<img src="img/Card/Diamond3.png">
+				<img src="img/Card/Diamond4.png">
+				<img src="img/Card/Diamond5.png">
+				<img src="img/Card/Diamond6.png">
+				<img src="img/Card/Diamond7.png">
+				<img src="img/Card/Diamond8.png">
+				<img src="img/Card/Diamond9.png">
+				<img src="img/Card/Diamond10.png">
+				<img src="img/Card/Diamond11.png">
+				<img src="img/Card/Diamond12.png">
+				<img src="img/Card/Diamond13.png">
+				<img src="img/Card/Heart1.png">
+				<img src="img/Card/Heart2.png">
+				<img src="img/Card/Heart3.png">
+				<img src="img/Card/Heart4.png">
+				<img src="img/Card/Heart5.png">
+				<img src="img/Card/Heart6.png">
+				<img src="img/Card/Heart7.png">
+				<img src="img/Card/Heart8.png">
+				<img src="img/Card/Heart9.png">
+				<img src="img/Card/Heart10.png">
+				<img src="img/Card/Heart11.png">
+				<img src="img/Card/Heart12.png">
+				<img src="img/Card/Heart13.png">
+				<img src="img/Card/Spade1.png">
+				<img src="img/Card/Spade2.png">
+				<img src="img/Card/Spade3.png">
+				<img src="img/Card/Spade4.png">
+				<img src="img/Card/Spade5.png">
+				<img src="img/Card/Spade6.png">
+				<img src="img/Card/Spade7.png">
+				<img src="img/Card/Spade8.png">
+				<img src="img/Card/Spade9.png">
+				<img src="img/Card/Spade10.png">
+				<img src="img/Card/Spade11.png">
+				<img src="img/Card/Spade12.png">
+				<img src="img/Card/Spade13.png">
+				<img src="img/Boss/BossNoob.png">
+				<img src="img/Boss/Club11.png">
+				<img src="img/Boss/Club12.png">
+				<img src="img/Boss/Club13.png">
+				<img src="img/Boss/Heart11.png">
+				<img src="img/Boss/Heart11.png">
+				<img src="img/Boss/Heart11.png">
+				<img src="img/Boss/Spade11.png">
+				<img src="img/Boss/Spade12.png">
+				<img src="img/Boss/Spade13.png">
+				<img src="img/Boss/Diamond11.png">
+				<img src="img/Boss/Diamond12.png">
+				<img src="img/Boss/Diamond13.png">
+			</div>
+			<script src="js/load.js"></script>
+			<script src="js/card.js"></script>
+			<script src="js/turn.js"></script>
+			<script src="js/mycard.js"></script>
+			<script src="js/bosscard.js"></script>
+			<script src="js/boss.js"></script>
+			<script src="js/point.js"></script>
+			<script src="js/item.js"></script>
 	</body>
 </html>

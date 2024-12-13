@@ -1,5 +1,6 @@
 var cardInDeath = [];
 var DeathCardNumber = 52;
+var DeathCardNumberNum = DeathCardNumber;
 
 //延迟函数
 function delay(ms) {
@@ -17,17 +18,19 @@ async function MakeDeathCard() {
 		DeathCard.appendChild(img);
 		await delay(50);
 	}
+	DeathCardNumberNum = DeathCardNumber;
 }
 //牌堆逐个删牌
 function MakeDeathCardSubtract() {
 	DeathCard = document.getElementById('deathcard');
 	DeathCard.removeChild(DeathCard.lastChild);
+	DeathCardNumberNum--;
 }
 
 //随机发牌
-function RandomCard(){
+function RandomCard() {
 	while (true) {
-		if (cardInDeath.length == DeathCardNumber) {
+		if (DeathCardNumberNum == 0) {
 			NumberTurn();
 			return;
 		}
@@ -40,13 +43,13 @@ function RandomCard(){
 	}
 }
 
-function Item13Card(){
-		if(item_13CardHave){
-			item_13NextCard = parseInt(item_13Card.getAttribute('data-cardInfo'));
-		}else{
-			return;
-		}
-		
+function Item13Card() {
+	if (item_13CardHave) {
+		item_13NextCard = parseInt(item_13Card.getAttribute('data-cardInfo'));
+	} else {
+		return;
+	}
+
 	card = RandomCard();
 	let color;
 	switch (Math.floor(card / 13)) {
@@ -77,7 +80,7 @@ function Item13Card(){
 }
 
 
-function Item14Card(){
+function Item14Card() {
 	myCard = document.getElementById('mycardimg0');
 	thisCard = document.querySelector(`#myitem_${item_14ClickID} img`);
 	cardCache = parseInt(myCard.getAttribute('data-cardInfo'));
@@ -104,7 +107,7 @@ function Item14Card(){
 	}
 	myCard.setAttribute('data-cardNumber', myCardNumber);
 	myCard.setAttribute('data-cardInfo', item_14Card);
-	
+
 	item_14Card = cardCache;
 	switch (Math.floor(item_14Card / 13)) {
 		case 0:
@@ -124,7 +127,7 @@ function Item14Card(){
 	myCardScore();
 }
 
-function Item15Card(){
+function Item15Card() {
 	myCard = document.getElementById('mycardimg0');
 	cardImgCache = myCard.src;
 	cardPointCache = parseInt(myCard.getAttribute('data-cardPiont'));
@@ -136,16 +139,16 @@ function Item15Card(){
 	}
 	myCard.setAttribute('data-cardNumber', myCardNumber);
 	myCard.setAttribute('data-cardInfo', item_14Card);
-	
+
 	bossCardFirst = cardImgCache;
 	bossCardFirstPoint = cardPointCache;
 	myCardScore();
 }
 
-function Text() {
-	console.log("click");
-	GiveMyCard();
-}
-function Text2(){
-	CleanMyCard();
-}
+// function Text() {
+// 	console.log("click");
+// 	GiveMyCard();
+// }
+// function Text2(){
+// 	CleanMyCard();
+// }

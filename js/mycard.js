@@ -10,10 +10,10 @@ function GiveMyCard(card) {
 			itemOn_9 = false;
 			NextCard = -1;
 			document.querySelector(`#myitem_${item_9ClickID} img`).src = 'img/icon/Heart1.png';
-		} else if(item_13NextCard != -1){
+		} else if (item_13NextCard != -1) {
 			card = item_13NextCard;
 			item_13NextCard = -1;
-		}else{
+		} else {
 			card = RandomCard();
 		}
 	}
@@ -54,7 +54,7 @@ function GiveMyCard(card) {
 
 	img.setAttribute('data-cardNumber', myCardNumber);
 	img.setAttribute('data-cardInfo', card);
-	
+
 	img.setAttribute('onclick', `myCardImgClick(${myCardNumber})`);
 	myCardNumber++;
 
@@ -206,22 +206,23 @@ function CleanMyCard() {
 var item_13Card;
 var item_13CardHave = false;
 var myCardImgClickcardID;
+
 function myCardImgClick(cardID) {
 	myCardImgClickcardID = cardID;
 	item_13Card = document.getElementById(`mycardimg${cardID}`);
 	item_13CardHave = true;
-	if(itemOn_13){
-		switch(myCardNumber){
+	if (itemOn_13) {
+		switch (myCardNumber) {
 			case 5:
-			document.getElementById('mycardimg4').style.transform = 'translateY(0)';
+				document.getElementById('mycardimg4').style.transform = 'translateY(0)';
 			case 4:
-			document.getElementById('mycardimg3').style.transform = 'translateY(0)';
+				document.getElementById('mycardimg3').style.transform = 'translateY(0)';
 			case 3:
-			document.getElementById('mycardimg2').style.transform = 'translateY(0)';
+				document.getElementById('mycardimg2').style.transform = 'translateY(0)';
 			case 2:
-			document.getElementById('mycardimg1').style.transform = 'translateY(0)';
+				document.getElementById('mycardimg1').style.transform = 'translateY(0)';
 			case 1:
-			document.getElementById('mycardimg0').style.transform = 'translateY(0)';
+				document.getElementById('mycardimg0').style.transform = 'translateY(0)';
 		}
 		item_13Card.style.transform = 'translateY(-1vh)';
 	}

@@ -46,7 +46,7 @@ body {
 .boss div {
 	position: relative;
 	width: 10vw;
-	height: 14vh;
+	height: 15vh;
 	overflow: hidden;
 	right: 0px;
 	border: 3px white solid;
@@ -116,6 +116,13 @@ body {
 .none2 {
 	width: 30vw;
 	height: 30vh;
+	justify-content: center;
+	align-items: center;
+}
+
+#nonetext {
+	font-size: 15vh;
+	line-height: 15vh;
 }
 
 .conterDIV {
@@ -224,9 +231,11 @@ body {
 	height: 35vh;
 	display: flex;
 }
+
 .myitem table tr {
-    display: flex;
+	display: flex;
 }
+
 .myitem table tr td {
 	flex-direction: column;
 	display: flex;
@@ -236,7 +245,8 @@ body {
 	justify-content: center;
 	border: none;
 }
-.myitem table tr td img{
+
+.myitem table tr td img {
 	max-height: 50%;
 	max-width: 100%;
 	width: auto;
@@ -287,8 +297,9 @@ body {
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 	transform: translateY(0);
 }
+
 .mycard img:hover {
-    transform: translateY(-1vh);
+	transform: translateY(-1vh);
 }
 
 @keyframes mycardin {
@@ -312,7 +323,7 @@ body {
 
 .mypointimg {
 	width: 30vw;
-	height: 20vh;
+	height: 5vh;
 }
 
 .mypoint {
@@ -352,7 +363,7 @@ body {
 } 
 */
 .mypointbutton {
-	height: 10vh;
+	height: 25vh;
 	width: 100%;
 	border-collapse: collapse;
 	text-align: center;
@@ -363,6 +374,8 @@ body {
 	width: 25%;
 	height: 25%;
 	background-color: black;
+	font-size: 20px;
+	border: 2px solid #051a00;
 }
 
 .mybutton_double,

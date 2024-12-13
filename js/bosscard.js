@@ -10,10 +10,10 @@ function GiveBossCard(card) {
 			itemOn_9 = false;
 			NextCard = -1;
 			document.querySelector(`#myitem_${item_9ClickID} img`).src = 'img/icon/Heart1.png';
-		} else if(item_13NextCard != -1){
+		} else if (item_13NextCard != -1) {
 			card = item_13NextCard;
 			item_13NextCard = -1;
-		}else{
+		} else {
 			card = RandomCard();
 		}
 	}
@@ -39,12 +39,12 @@ function GiveBossCard(card) {
 			color = "Diamond";
 			break;
 	}
-	if (bossCardNumber == 0){
+	if (bossCardNumber == 0) {
 		bossCardFirst = `img/Card/${color}${(card % 13) + 1}.png`;
 		img.src = 'img/Card/Background.png';
 		bossCardFirstPoint = (((card % 13) + 1) > 10 ? 10 : ((card % 13) + 1));
 		img.setAttribute('data-cardPiont', 0);
-	}else{
+	} else {
 		img.src = `img/Card/${color}${(card % 13) + 1}.png`;
 		img.setAttribute('data-cardPiont', (((card % 13) + 1) > 10 ? 10 : ((card % 13) + 1)));
 	}
@@ -52,7 +52,7 @@ function GiveBossCard(card) {
 	img.style.left = '0';
 	img.setAttribute('data-cardNumber', bossCardNumber);
 	bossCardNumber++;
-	
+
 	MakeDeathCardSubtract();
 	bosscard.appendChild(img);
 
@@ -151,35 +151,35 @@ function bossCardScore() {
 	if (card0Score == 1 && bossallCardScore < 12) {
 		card0Score = 11;
 		bossallCardScore = (card0Score + card1Score + card2Score + card3Score + card4Score);
-	}else if (card0Score == 11 && bossallCardScore > 21){
+	} else if (card0Score == 11 && bossallCardScore > 21) {
 		card0Score = 1;
 		bossallCardScore = (card0Score + card1Score + card2Score + card3Score + card4Score);
 	}
 	if (card1Score == 1 && bossallCardScore < 12) {
 		card1Score = 11;
 		bossallCardScore = (card0Score + card1Score + card2Score + card3Score + card4Score);
-	}else if (card1Score == 11 && bossallCardScore > 21){
+	} else if (card1Score == 11 && bossallCardScore > 21) {
 		card1Score = 1;
 		bossallCardScore = (card0Score + card1Score + card2Score + card3Score + card4Score);
 	}
 	if (card2Score == 1 && bossallCardScore < 12) {
 		card2Score = 11;
 		bossallCardScore = (card0Score + card1Score + card2Score + card3Score + card4Score);
-	}else if (card2Score == 11 && bossallCardScore > 21){
+	} else if (card2Score == 11 && bossallCardScore > 21) {
 		card2Score = 1;
 		bossallCardScore = (card0Score + card1Score + card2Score + card3Score + card4Score);
 	}
 	if (card3Score == 1 && bossallCardScore < 12) {
 		card3Score = 11;
 		bossallCardScore = (card0Score + card1Score + card2Score + card3Score + card4Score);
-	}else if (card3Score == 11 && bossallCardScore > 21){
+	} else if (card3Score == 11 && bossallCardScore > 21) {
 		card3Score = 1;
 		bossallCardScore = (card0Score + card1Score + card2Score + card3Score + card4Score);
 	}
 	if (card4Score == 1 && bossallCardScore < 12) {
 		card4Score = 11;
 		bossallCardScore = (card0Score + card1Score + card2Score + card3Score + card4Score);
-	}else if (card4Score == 11 && bossallCardScore > 21){
+	} else if (card4Score == 11 && bossallCardScore > 21) {
 		card4Score = 1;
 		bossallCardScore = (card0Score + card1Score + card2Score + card3Score + card4Score);
 	}
@@ -187,7 +187,7 @@ function bossCardScore() {
 }
 
 //清空手牌
-function CleanbossCard(){
+function CleanbossCard() {
 	bossCardNumber = 0;
 	document.getElementById('mastercard').innerHTML = '';
 }
