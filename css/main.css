@@ -43,10 +43,10 @@ body {
 	justify-content: space-between;
 }
 
-.boss div {
+.bossimgdiv {
 	position: relative;
 	width: 10vw;
-	height: 15vh;
+	height: 10vw;
 	overflow: hidden;
 	right: 0px;
 	border: 3px white solid;

@@ -66,6 +66,20 @@ window.addEventListener('resize', bossCardLeftChange)
 
 //灵活手牌位置
 function bossCardLeftChange() {
+	//顺便放一下boss头像div位置
+	bossimgdiv = document.getElementById('bossimgdiv');
+	bossimg = document.getElementById('bossimg');
+	if (window.innerHeight / 6 > window.innerWidth / 10){
+		bossimgdiv.style.width = '10vw'
+		bossimgdiv.style.height = '10vw'
+		bossimg.style.width = '10vw'
+	}else{
+		bossimgdiv.style.width = '20vh'
+		bossimgdiv.style.height = '20vh'
+		bossimg.style.width = '20vh'
+	}
+	// console.log("高" + window.innerHeight + "高2" + window.innerHeight / 10 + "宽" + window.innerWidth + "宽2" + window.innerWidth / 10)
+	
 	bosscard = document.getElementById('mastercard');
 	bossCardWidth = bosscard.offsetWidth - 10;
 	card0 = document.getElementById('bosscardimg0');
@@ -113,12 +127,13 @@ function bossCardLeftChange() {
 		case 1:
 			card0.style.left = 0;
 	}
+	
 }
 
 
 var bossallCardScore = 0;
 
-//算己方数字
+//算数字
 function bossCardScore() {
 	card0Score = 0;
 	card1Score = 0;
@@ -147,6 +162,9 @@ function bossCardScore() {
 		card4 = document.getElementById('bosscardimg4');
 		card4Score = parseInt(card4.getAttribute('data-cardPiont'));
 	}
+	
+	//可能重复，是否能够修改暂且存疑
+	//否决修改，双ACE时可能出现问题
 	bossallCardScore = (card0Score + card1Score + card2Score + card3Score + card4Score);
 	if (card0Score == 1 && bossallCardScore < 12) {
 		card0Score = 11;

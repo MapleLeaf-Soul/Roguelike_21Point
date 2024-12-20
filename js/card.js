@@ -43,6 +43,7 @@ function RandomCard() {
 	}
 }
 
+//13快手技能模块
 function Item13Card() {
 	if (item_13CardHave) {
 		item_13NextCard = parseInt(item_13Card.getAttribute('data-cardInfo'));
@@ -79,7 +80,7 @@ function Item13Card() {
 	myCardScore();
 }
 
-
+//14袖内技能模块
 function Item14Card() {
 	myCard = document.getElementById('mycardimg0');
 	thisCard = document.querySelector(`#myitem_${item_14ClickID} img`);
@@ -127,6 +128,7 @@ function Item14Card() {
 	myCardScore();
 }
 
+//15交换底牌技能模块
 function Item15Card() {
 	myCard = document.getElementById('mycardimg0');
 	cardImgCache = myCard.src;

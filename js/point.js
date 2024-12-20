@@ -37,14 +37,10 @@ async function NowMyPoint(thispoint) {
 	while (myPoint != myPointSee) {
 		if (myPointSee < myPoint) {
 			myPointSee += Math.ceil((myPoint - myPointSee) / 50);
-			if ((myPoint - myPointSee) / 5 < 10) {
-				// myPointSee++;
-			}
+			// myPointSee++;
 		} else {
 			myPointSee -= Math.ceil((myPointSee - myPoint) / 50);
-			if ((myPointSee - myPoint) / 5 < 10) {
-				// myPointSee--;
-			}
+			myPointSee--;
 		}
 		await delay(10);
 		myPointDiv.textContent = myPointSee;
@@ -63,14 +59,10 @@ async function NowLevelPoint(thispoint) {
 	while (levelPoint != levelPointSee) {
 		if (levelPointSee < levelPoint) {
 			levelPointSee += Math.ceil((levelPoint - levelPointSee) / 25);
-			if ((levelPoint - levelPointSee) / 5 < 10) {
-				// levelPointSee++;
-			}
+			//levelPointSee++;
 		} else {
 			levelPointSee -= Math.ceil((levelPointSee - levelPoint) / 25);
-			if ((levelPointSee - levelPoint) / 5 < 10) {
-				// levelPointSee--;
-			}
+			//levelPointSee--;
 		}
 		await delay(10);
 		levelPointDiv.textContent = levelPointSee;

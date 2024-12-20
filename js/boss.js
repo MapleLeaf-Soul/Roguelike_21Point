@@ -1,6 +1,7 @@
 var bossType = [0];
 var bossTurnNumber = 0;
 
+//随机抽取boss列表
 function BossRandom() {
 	for (a = 0; a < 4; a++) {
 		while (true) {
@@ -32,6 +33,7 @@ function BossRandom() {
 	console.log(bossType);
 }
 
+//boss卡图
 function BossImg(BossID) {
 	bossImg = document.getElementById('bossimg');
 	switch (BossID) {
@@ -78,6 +80,7 @@ function BossImg(BossID) {
 	console.log("boss" + bossType[bossTurnNumber <= 12 ? bossTurnNumber : ((bossTurnNumber % 12) + 1)])
 }
 
+//bossAI选择
 async function BossSwitch(BossID) {
 	switch (BossID) {
 		case 0:
@@ -122,6 +125,7 @@ async function BossSwitch(BossID) {
 	}
 }
 
+//第0关笨蛋boss
 async function NoobBoss() {
 	while (bossallCardScore < 17 && bossCardNumber != 5) {
 		if (cardInDeath.length == DeathCardNumber) {

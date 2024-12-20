@@ -35,6 +35,7 @@ async function GameTurnStart() {
 
 //发牌回合
 function GameTurn() {
+	//特殊牌型检测
 	if (myCardNumber >= 5 && myallCardScore <= gamePointMax) {
 		myFiveNumber = true;
 		NowLevelPoint(levelPoint);
@@ -52,9 +53,7 @@ function GameTurn() {
 		NowLevelPoint(-levelPoint);
 	}
 
-
-
-
+	//允许叫牌
 	if (myallCardScore >= gamePointMax || myCardNumber == 5) {
 		StopTurn();
 	} else {
@@ -286,6 +285,7 @@ async function NumberTurn() {
 	//NextText()
 }
 
+//手动下一轮
 function NextText() {
 	GameNextTurn();
 }
@@ -355,6 +355,7 @@ function GameNextTurn() {
 
 }
 
+//下一局
 async function GameNext() {
 	bossTurnNumber++;
 	cardInDeath = [];
@@ -378,6 +379,7 @@ async function GameNext() {
 	}
 	BossImg(bossType[bossTurnNumber <= 12 ? bossTurnNumber : ((bossTurnNumber % 12) + 1)]);
 }
+
 
 function EndGame() {
 	alert("游戏结束");

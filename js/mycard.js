@@ -152,6 +152,9 @@ function myCardScore() {
 		card4 = document.getElementById('mycardimg4');
 		card4Score = parseInt(card4.getAttribute('data-cardPiont'));
 	}
+	
+	//可能重复，是否能够修改暂且存疑
+	//否决修改，双ACE时可能出现问题
 	myallCardScore = (card0Score + card1Score + card2Score + card3Score + card4Score);
 	if (card0Score == 1 && myallCardScore < 12) {
 		card0Score = 11;
@@ -202,7 +205,7 @@ function CleanMyCard() {
 	document.getElementById('mycard').innerHTML = '';
 }
 
-//选择卡牌
+//选择手卡
 var item_13Card;
 var item_13CardHave = false;
 var myCardImgClickcardID;

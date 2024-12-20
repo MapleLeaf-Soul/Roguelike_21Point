@@ -177,7 +177,7 @@ async function GiveMyItem(itemID) {
 	PointTurn();
 }
 
-//点击反应
+//主动技能点击反应
 var itemColdTime_9 = 0;
 var itemColdTime_10 = 0;
 var itemColdTime_11 = 0;
