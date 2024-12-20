@@ -2,4 +2,4 @@
 
 开发中，敬等后续。
 
-试玩：https://mapleleaf-soul.github.io/Rouguelike_21Point/
+试玩：https://mapleleaf-soul.github.io/Roguelike_21Point/
