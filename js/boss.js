@@ -36,7 +36,7 @@ function BossImg(BossID) {
 	bossImg = document.getElementById('bossimg');
 	switch (BossID) {
 		case 0:
-			bossImg.src = 'img/Boss/BossNoob.png'
+			bossImg.src = 'img/Boss/JOKER-B.png'
 			break;
 		case 1:
 			bossImg.src = 'img/Boss/Diamond11.png'

@@ -12,7 +12,7 @@ async function GameStart() {
 	document.getElementById('gamebutton_start').style.display = 'none';
 	ItemRandom();
 	BossRandom();
-	document.getElementById('bossimg').src = 'img/Boss/BossNoob.png';
+	document.getElementById('bossimg').src = 'img/Boss/JOKER-B.png';
 }
 var turnNumber = 0;
 
